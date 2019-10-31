@@ -31,11 +31,16 @@ export default class Registration extends Component {
       },
       body: JSON.stringify({ user: dataUser }),
     });
-    const message = await response.json();
-    console.log(message.message);
+    const user = await response.json();
+    console.log(user);
+    
+    // this.props.setUser(user);
+    this.history.push('/login');
   };
 
   render() {
+
+
     return (
       <form>
         <div className="form-group">
