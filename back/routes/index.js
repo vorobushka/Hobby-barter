@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   res.send('тестирование');
 });
 
-router.post('/api', async (req, res) => {
+router.post('/api/register/', async (req, res) => {
   try {
     const user = new User({
       email: req.body.user.email,
@@ -15,12 +15,16 @@ router.post('/api', async (req, res) => {
       password: req.body.user.password,
     });
     await user.save();
+    const messageObj = {
+      message: 'регистрация прошла успешно',
+    };
+    res.json(messageObj);
   } catch (error) {
     res.json(error);
   }
 });
 
-router.post(async (req, res) => {
+router.post('/api/login', async (req, res) => {
   // const { login, password } = req.body;
   // const user = await User.findOne({ login });
   // if (!user) {

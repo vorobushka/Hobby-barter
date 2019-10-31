@@ -23,7 +23,7 @@ export default class Registration extends Component {
   registration = async () => {
     const dataUser = this.state;
     console.log(dataUser);
-    const response = await fetch('/api', {
+    const response = await fetch('/api/register/', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -31,6 +31,8 @@ export default class Registration extends Component {
       },
       body: JSON.stringify({ user: dataUser }),
     });
+    const message = await response.json();
+    console.log(message.message);
   };
 
   render() {
