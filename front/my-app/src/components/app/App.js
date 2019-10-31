@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Login from '../login/login'
-import Registration from '../registration/registration'
+import Registration from '../registration/registration';
 
 
 export default class App extends Component {
@@ -10,7 +10,7 @@ export default class App extends Component {
     return (
       <div>
       <Login/>
-      {/* <Registration /> */}
+      <Registration />
     
       </div>
     )
