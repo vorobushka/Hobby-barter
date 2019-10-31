@@ -20,10 +20,11 @@ export default class Registration extends Component {
     this.setState({ password: e.target.value });
   };
 
-  registration = async () => {
+  registration = async (e) => {
+    e.preventDefault()
     const dataUser = this.state;
     console.log(dataUser);
-    const response = await fetch('/api/register/', {
+    const response = await fetch('/api/registration', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -34,15 +35,14 @@ export default class Registration extends Component {
     const user = await response.json();
     console.log(user);
     
+
     // this.props.setUser(user);
-    this.history.push('/login');
+    this.props.history.push('/alert');
   };
 
   render() {
-
-
     return (
-      <form>
+      <form onSubmit={this.registration}>
         <div className="form-group">
           <input type="email" className="form-control" name="email" placeholder="email" onChange={this.emailInState} />
         </div>
@@ -58,7 +58,7 @@ export default class Registration extends Component {
             onChange={this.passwordInState}
           />
         </div>
-        <button onClick={this.registration}>Submit</button>
+        <button>Submit</button>
       </form>
     );
   }

@@ -7,7 +7,9 @@ router.get('/', (req, res) => {
   res.send('тестирование');
 });
 
-router.post('/api/register/', async (req, res) => {
+router.post('/api/registration', async (req, res) => {
+  console.log('прилетело');
+
   try {
     const user = new User({
       email: req.body.user.email,
@@ -18,6 +20,8 @@ router.post('/api/register/', async (req, res) => {
     // const messageObj = {
     //   message: 'регистрация прошла успешно',
     // };
+    console.log(user);
+
     res.json(user);
   } catch (error) {
     res.json(error);
@@ -35,7 +39,7 @@ router.post('/api/login/', async (req, res) => {
     const message = 'Пароль введён неверно';
     res.json({ message });
   } else {
-    req.session.user = user;
+    // req.session.user = user;
     res.json(user);
   }
 });
