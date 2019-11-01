@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 export default class Login extends Component {
   render() {
     return (
+      <div className="div-form">
       <form className="form-">
         <div className="form-group">
           <input type="text" className="form-control" name="login" placeholder="login" />
@@ -15,6 +16,7 @@ export default class Login extends Component {
           Submit
         </button>
       </form>
+      </div >
     );
   }
 }

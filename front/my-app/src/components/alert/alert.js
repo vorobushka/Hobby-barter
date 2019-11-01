@@ -14,7 +14,7 @@ export default class Alert extends Component {
     return (
       <div className="alert alert-info" role="alert">
         <strong>Heads up!</strong> Congratulations!!!
-        {this.state.interval && <Redirect to="/login" />}
+        {this.state.interval && <Redirect to="/profile" />}
       </div>
     );
   }

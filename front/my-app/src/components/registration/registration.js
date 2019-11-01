@@ -42,7 +42,8 @@ export default class Registration extends Component {
 
   render() {
     return (
-      <form onSubmit={this.registration}>
+      <div className="div-form">
+        <form className="form-" onSubmit={this.registration}>
         <div className="form-group">
           <input type="email" className="form-control" name="email" placeholder="email" onChange={this.emailInState} />
         </div>
@@ -60,6 +61,7 @@ export default class Registration extends Component {
         </div>
         <button>Submit</button>
       </form>
+      </div>
     );
   }
 }
