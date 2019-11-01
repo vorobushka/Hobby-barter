@@ -1,7 +1,9 @@
 import './registration.css';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { profileUserAC } from '../../redux/actions';
 
-export default class Registration extends Component {
+class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,10 +22,9 @@ export default class Registration extends Component {
     this.setState({ password: e.target.value });
   };
 
-  registration = async (e) => {
-    e.preventDefault()
+  registration = async e => {
+    e.preventDefault();
     const dataUser = this.state;
-    console.log(dataUser);
     const response = await fetch('/api/registration', {
       method: 'POST',
       headers: {
@@ -33,10 +34,7 @@ export default class Registration extends Component {
       body: JSON.stringify({ user: dataUser }),
     });
     const user = await response.json();
-    console.log(user);
-    
-
-    // this.props.setUser(user);
+    this.props.profileUser(user);
     this.props.history.push('/alert');
   };
 
@@ -44,24 +42,47 @@ export default class Registration extends Component {
     return (
       <div className="div-form">
         <form className="form-" onSubmit={this.registration}>
-        <div className="form-group">
-          <input type="email" className="form-control" name="email" placeholder="email" onChange={this.emailInState} />
-        </div>
-        <div className="form-group">
-          <input type="text" className="form-control" name="login" placeholder="login" onChange={this.loginInState} />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            name="password"
-            className="form-control"
-            placeholder="password"
-            onChange={this.passwordInState}
-          />
-        </div>
-        <button>Submit</button>
-      </form>
+          <div className="form-group">
+            <input
+              type="email"
+              className="form-control"
+              name="email"
+              placeholder="email"
+              onChange={this.emailInState}
+            />
+          </div>
+          <div className="form-group">
+            <input type="text" className="form-control" name="login" placeholder="login" onChange={this.loginInState} />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              name="password"
+              className="form-control"
+              placeholder="password"
+              onChange={this.passwordInState}
+            />
+          </div>
+          <button>Submit</button>
+        </form>
       </div>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    profileUser: user => dispatch(profileUserAC(user)),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Registration);
