@@ -2,18 +2,40 @@ import './profile.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { profileUserAC } from '../../redux/actions';
 
 class Profile extends Component {
   constructor(props) {
     super(props);
-    
   }
+  componentDidMount() {
+    this.getProfile();
+  }
+
+  getProfile = async e => {
+    const response = await fetch('/api/auto', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+    const userFromBack = await response.json();
+    this.props.profileUser(userFromBack);
+  };
+
+  logout = async e => {
+    console.log('внутри logout');
+    await fetch('/api/logout')
+    this.props.history.push('/login');
+  };
+
   render() {
     const userProfile = this.props.user;
     // console.log(this.props.user.login);
-    
+
     return (
-      <div class="container emp-profile">
+      <div className="container emp-profile">
         <form method="post">
           <div className="row">
             <div className="col-md-4">
@@ -67,7 +89,7 @@ class Profile extends Component {
               </div>
             </div>
             <div className="col-md-2">
-              <Link to="/editprofile">Edit Profile</Link>
+              <Link to="/editprofile">Edit Profile </Link>
             </div>
           </div>
           <div className="row">
@@ -185,25 +207,27 @@ class Profile extends Component {
             </div>
           </div>
         </form>
+        <div className="col-md-2">
+          <button onClick={e => this.logout(e)}>Logout</button>
+        </div>
       </div>
     );
   }
 }
 
-
 function mapStateToProps(state) {
   return {
-    user: state.user
-  }
+    user: state.user,
+  };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     setUser: (user) => dispatch(setUserAC(user)),
-//   }
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    profileUser: user => dispatch(profileUserAC(user)),
+  };
+}
 
 export default connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps,
 )(Profile);
