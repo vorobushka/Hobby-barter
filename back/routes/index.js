@@ -48,7 +48,7 @@ router.post('/api/auto/', (req, res) => {
 router.get('/api/logout', async (req, res, next) => {
   console.log(req.session.user);
 
-  if (req.session) {
+  if (req.session.user && req.session.user_sid) {
     try {
       res.clearCookie('user_sid');
       await req.session.destroy();
