@@ -46,13 +46,18 @@ router.post('/api/auto/', (req, res) => {
 });
 
 router.get('/api/logout', async (req, res, next) => {
-  console.log(req.session.user);
+  //console.log(req.session.user);
+if (req.session.user && req.cookies.user_sid) {
 
-  if (req.session) {
     try {
-      res.clearCookie('user_sid');
+      res.clearCookie('user_sid')
       await req.session.destroy();
-    } catch (error) {
+      //res.send('go')
+    }
+    // try {
+    //   res.clearCookie('user_sid');
+    //   await req.session.destroy();
+     catch (error) {
       next(error);
     }
   } else {
