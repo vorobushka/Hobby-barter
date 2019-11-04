@@ -98,13 +98,13 @@ class Profile extends Component {
           <div className="row">
             <div className="col-md-4">
               <div className="profile-work">
-                <p>WORK LINK</p>
+                <p>HOBBY</p>
                 <a href="">Website Link</a>
                 <br />
                 <a href="">Bootsnipp Profile</a>
                 <br />
                 <a href="">Bootply Profile</a>
-                <p>SKILLS</p>
+                <p>WISHES</p>
                 <a href="">Web Designer</a>
                 <br />
                 <a href="">Web Developer</a>
