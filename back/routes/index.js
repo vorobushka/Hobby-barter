@@ -41,16 +41,20 @@ router.post('/api/login/', async (req, res) => {
 });
 
 router.post('/api/auto/', async (req, res) => {
-  console.log(req.session.user._id);
-  
+  // console.log(req.session.user._id);
+
   const id = req.session.user._id;
   const userUpdate = await User.findById(id);
-  console.log(userUpdate);
+  // console.log(userUpdate);
   req.session.user ? res.json(userUpdate) : res.json({ user: 0 });
 });
 
-router.post('/api/selection/', (req, res) => {
-  const user1 = req.session.user;
+router.post('/api/selection/', async (req, res) => {
+  const id = req.session.user._id;
+  const userFromProfile = await User.findById(id);
+  const { wish } = userFromProfile;
+  const users = await User.find({ hobby: wish });
+  console.log('вот он', users);
 });
 
 router.get('/api/logout', async (req, res, next) => {
@@ -68,11 +72,11 @@ router.get('/api/logout', async (req, res, next) => {
 
 router.post('/api/edit/', async (req, res) => {
   const {
- name, photo, email, login, hobby, wish, phone, profession,
+ name, photo, email, login, hobby, wish, phone, profession 
 } = req.body.user;
   const id = req.session.user._id;
-  console.log(id);
-  
+  // console.log(id);
+
   const user = await User.findByIdAndUpdate(id, {
     name,
     photo,

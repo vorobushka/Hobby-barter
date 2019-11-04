@@ -198,7 +198,7 @@ class Profile extends Component {
           <button onClick={e => this.logout(e)}>Logout</button>
         </div>
         <div className="col-md-2">
-          <button onClick={e => this.findUser(e)}>Найти партайгеноссе</button>
+          <button onClick={this.findUser()}>Найти</button>
         </div>
       </div>
     );
