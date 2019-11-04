@@ -65,4 +65,28 @@ if (req.session.user && req.cookies.user_sid) {
   }
 });
 
+
+router.post('/api/edit/', async (req, res) => {
+  const {
+    name,
+    photo,
+    email,
+    login,
+    hobby,
+    wish,
+    phone,
+    profession
+  } = req.body.user;
+const id = req.session.user._id
+  const user = await User.findByIdAndUpdate(id, {
+    name, 
+    photo,
+    email,
+    login,
+    hobby,
+    wish,
+    phone,
+    profession });
+  console.log(user)
+})
 module.exports = router;
