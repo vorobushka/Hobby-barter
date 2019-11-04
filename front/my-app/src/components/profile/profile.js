@@ -30,10 +30,16 @@ class Profile extends Component {
     this.props.history.push('/login');
   };
 
-  // findUser = async e => {
-  //   const respUser = 
-  // }
-
+  findUser = async e => {
+    const respUser = await fetch('/api/selection', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+    
+  }
 
   render() {
     const userProfile = this.props.user;
@@ -212,6 +218,9 @@ class Profile extends Component {
         </form>
         <div className="col-md-2">
           <button onClick={e => this.logout(e)}>Logout</button>
+        </div>
+        <div className="col-md-2">
+          <button onClick={e => this.findUser(e)}>Найти партайгеноссе</button>
         </div>
       </div>
     );
