@@ -26,14 +26,12 @@ class Profile extends Component {
 
   logout = async e => {
     console.log('внутри logout');
-    await fetch('/api/logout')
+    await fetch('/api/logout');
     this.props.history.push('/login');
   };
 
   render() {
     const userProfile = this.props.user;
-    // console.log(this.props.user.login);
-
     return (
       <div className="container emp-profile">
         <form method="post">
