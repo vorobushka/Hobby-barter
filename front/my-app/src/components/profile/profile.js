@@ -21,6 +21,8 @@ class Profile extends Component {
       },
     });
     const userFromBack = await response.json();
+    console.log(userFromBack);
+    
     this.props.profileUser(userFromBack);
   };
 
@@ -38,11 +40,12 @@ class Profile extends Component {
         'Content-Type': 'application/json',
       },
     });
-    
-  }
+  };
 
   render() {
     const userProfile = this.props.user;
+    console.log(userProfile);
+
     return (
       <div className="container emp-profile">
         <form method="post">
@@ -63,10 +66,6 @@ class Profile extends Component {
               <div className="profile-head">
                 {userProfile ? <p>{userProfile.login}</p> : <></>}
 
-                <h6>Web Developer and Designer</h6>
-                <p className="proile-rating">
-                  RANKINGS : <span>8/10</span>
-                </p>
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                   <li className="nav-item">
                     <a
@@ -104,23 +103,10 @@ class Profile extends Component {
           <div className="row">
             <div className="col-md-4">
               <div className="profile-work">
-                <p>HOBBY</p>
-                <a href="">Website Link</a>
-                <br />
-                <a href="">Bootsnipp Profile</a>
-                <br />
-                <a href="">Bootply Profile</a>
-                <p>WISHES</p>
-                <a href="">Web Designer</a>
-                <br />
-                <a href="">Web Developer</a>
-                <br />
-                <a href="">WordPress</a>
-                <br />
-                <a href="">WooCommerce</a>
-                <br />
-                <a href="">PHP, .Net</a>
-                <br />
+                <p>HOBBY: </p>
+                <div>{userProfile ? <p>{userProfile.hobby}</p> : <></>}</div>
+                <p>WISHES: </p>
+                <div>{userProfile ? <p>{userProfile.wish}</p> : <></>}</div>
               </div>
             </div>
             <div className="col-md-8">
@@ -128,17 +114,9 @@ class Profile extends Component {
                 <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div className="row">
                     <div className="col-md-6">
-                      <label>User Id</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>Kshiti123</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
                       <label>Name</label>
                     </div>
-                    <div className="col-md-6">{userProfile ? <p>{userProfile.login}</p> : <></>}</div>
+                    <div className="col-md-6">{userProfile ? <p>{userProfile.name}</p> : <></>}</div>
                   </div>
                   <div className="row">
                     <div className="col-md-6">
@@ -151,7 +129,7 @@ class Profile extends Component {
                       <label>Phone</label>
                     </div>
                     <div className="col-md-6">
-                      <p>123 456 7890</p>
+                      <div className="col-md-6">{userProfile ? <p>{userProfile.phone}</p> : <></>}</div>
                     </div>
                   </div>
                   <div className="row">
@@ -159,7 +137,7 @@ class Profile extends Component {
                       <label>Profession</label>
                     </div>
                     <div className="col-md-6">
-                      <p>Web Developer and Designer</p>
+                      <div className="col-md-6">{userProfile ? <p>{userProfile.profession}</p> : <></>}</div>
                     </div>
                   </div>
                 </div>

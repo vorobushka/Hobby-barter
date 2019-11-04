@@ -10,7 +10,6 @@ router.get('/', sessionChecker, (req, res) => {
 });
 
 router.post('/api/registration', async (req, res) => {
-  console.log('прилетело');
   try {
     const user = new User({
       email: req.body.user.email,
@@ -41,8 +40,13 @@ router.post('/api/login/', async (req, res) => {
   }
 });
 
-router.post('/api/auto/', (req, res) => {
-  req.session.user ? res.json(req.session.user) : res.json({ user: 0 });
+router.post('/api/auto/', async (req, res) => {
+  console.log(req.session.user._id);
+  
+  const id = req.session.user._id;
+  const userUpdate = await User.findById(id);
+  console.log(userUpdate);
+  req.session.user ? res.json(userUpdate) : res.json({ user: 0 });
 });
 
 router.post('/api/selection/', (req, res) => {
@@ -50,8 +54,6 @@ router.post('/api/selection/', (req, res) => {
 });
 
 router.get('/api/logout', async (req, res, next) => {
-  console.log(req.session.user);
-
   if (req.session.user && req.session.user_sid) {
     try {
       res.clearCookie('user_sid');
@@ -64,9 +66,14 @@ router.get('/api/logout', async (req, res, next) => {
   }
 });
 
-
 router.post('/api/edit/', async (req, res) => {
   const {
+ name, photo, email, login, hobby, wish, phone, profession,
+} = req.body.user;
+  const id = req.session.user._id;
+  console.log(id);
+  
+  const user = await User.findByIdAndUpdate(id, {
     name,
     photo,
     email,
@@ -74,18 +81,8 @@ router.post('/api/edit/', async (req, res) => {
     hobby,
     wish,
     phone,
-    profession
-  } = req.body.user;
-const id = req.session.user._id
-  const user = await User.findByIdAndUpdate(id, {
-    name, 
-    photo,
-    email,
-    login,
-    hobby,
-    wish,
-    phone,
-    profession });
-  console.log(user)
-})
+    profession,
+  });
+  await res.json(user);
+});
 module.exports = router;

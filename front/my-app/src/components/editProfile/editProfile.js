@@ -65,6 +65,8 @@ export default class EditProfile extends Component {
       body: JSON.stringify({ user: dataUser }),
     });
     const user = await response.json();
+    console.log(user);
+    
   //   this.props.profileUser(user);
   //   this.props.history.push('/alert');
   };
