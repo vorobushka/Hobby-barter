@@ -2,6 +2,10 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const createError = require('http-errors');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
+const { cookiesCleaner } = require('./middleware/auth');
 
 mongoose.connect('mongodb://localhost:27017/skillBarter', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -9,6 +13,24 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
+
+const fileStoreOptions = {};
+app.use(
+  session({
+    store: new FileStore(fileStoreOptions),
+    // retries: 0,
+    key: 'user_sid',
+    secret: 'anything here',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 600000,
+    },
+  }),
+);
+
+app.use(cookiesCleaner);
 
 const indexRouter = require('./routes/index');
 
