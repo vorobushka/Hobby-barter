@@ -45,6 +45,10 @@ router.post('/api/auto/', (req, res) => {
   req.session.user ? res.json(req.session.user) : res.json({ user: 0 });
 });
 
+router.post('/api/selection/', (req, res) => {
+  const user1 = req.session.user;
+});
+
 router.get('/api/logout', async (req, res, next) => {
   console.log(req.session.user);
 
