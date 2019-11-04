@@ -30,6 +30,11 @@ class Profile extends Component {
     this.props.history.push('/login');
   };
 
+  // findUser = async e => {
+  //   const respUser = 
+  // }
+
+
   render() {
     const userProfile = this.props.user;
     return (
