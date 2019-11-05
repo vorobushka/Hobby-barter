@@ -58,10 +58,11 @@ router.post('/api/selection/', async (req, res) => {
 });
 
 router.get('/api/logout', async (req, res, next) => {
-  if (req.session.user && req.session.user_sid) {
+  if (req.session.user) {
     try {
-      res.clearCookie('user_sid');
       await req.session.destroy();
+      res.clearCookie('user_sid');
+      res.send();
     } catch (error) {
       next(error);
     }
