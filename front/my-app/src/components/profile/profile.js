@@ -143,7 +143,7 @@ class Profile extends Component {
           </div>
         
         <div className="col-md-2">
-          <button onClick={this.findUser()}>Найти</button>
+          <button onClick={e => this.findUser(e)}>Найти</button>
         </div>
       </div>
     );
