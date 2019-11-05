@@ -19,7 +19,7 @@ class Login extends Component {
     this.setState({ password: e.target.value });
   };
 
-  login = async e => {
+  login = async (e) => {
     e.preventDefault();
     const dataUser = this.state;
     const response = await fetch('/api/login', {

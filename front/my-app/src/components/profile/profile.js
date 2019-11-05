@@ -27,7 +27,8 @@ class Profile extends Component {
   };
 
   logout = async e => {
-    console.log('внутри logout');
+    //console.log('внутри logout');
+    e.preventDefault()
     await fetch('/api/logout');
     this.props.history.push('/login');
   };
@@ -48,7 +49,6 @@ class Profile extends Component {
 
     return (
       <div className="container emp-profile">
-        <form method="post">
           <div className="row">
             <div className="col-md-4">
               <div className="profile-img">
@@ -64,10 +64,19 @@ class Profile extends Component {
             </div>
             <div className="col-md-6">
               <div className="profile-head">
-                {userProfile ? <p>{userProfile.login}</p> : <></>}
-
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                   <li className="nav-item">
+                    <nav class="navbar navbar-light bg-light">
+
+                      <form className="form-inline">
+                        <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
+                          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                        <button className="btn btn-link" onClick={e => this.logout(e)}>Logout</button>
+                      <Link to="/editprofile">Edit Profile </Link>
+                    
+                  
+                      </nav>
                     <a
                       className="nav-link active"
                       id="home-tab"
@@ -81,23 +90,9 @@ class Profile extends Component {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a
-                      className="nav-link"
-                      id="profile-tab"
-                      data-toggle="tab"
-                      href="#profile"
-                      role="tab"
-                      aria-controls="profile"
-                      aria-selected="false"
-                    >
-                      Timeline
-                    </a>
                   </li>
                 </ul>
               </div>
-            </div>
-            <div className="col-md-2">
-              <Link to="/editprofile">Edit Profile </Link>
             </div>
           </div>
           <div className="row">
@@ -116,7 +111,7 @@ class Profile extends Component {
                     <div className="col-md-6">
                       <label>Name</label>
                     </div>
-                    <div className="col-md-6">{userProfile ? <p>{userProfile.name}</p> : <></>}</div>
+                    <div className="col-md-6">{userProfile ? <p>{userProfile.login}</p> : <></>}</div>
                   </div>
                   <div className="row">
                     <div className="col-md-6">
@@ -142,63 +137,15 @@ class Profile extends Component {
                   </div>
                 </div>
                 <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Experience</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>Expert</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Hourly Rate</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>10$/hr</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Total Projects</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>230</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>English Level</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>Expert</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Availability</label>
-                    </div>
-                    <div className="col-md-6">
-                      <p>6 months</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-12">
-                      <label>Your Bio</label>
-                      <br />
-                      <p>Your detail description</p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </form>
+        
         <div className="col-md-2">
-          <button onClick={e => this.logout(e)}>Logout</button>
-        </div>
-        <div className="col-md-2">
+        
           <button onClick={e => this.findUser(e)}>Найти партайгеноссе</button>
+          
         </div>
       </div>
     );
@@ -221,3 +168,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Profile);
+
