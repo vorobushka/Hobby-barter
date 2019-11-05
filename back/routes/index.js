@@ -14,7 +14,7 @@ router.post('/api/registration', async (req, res) => {
     const user = new User({
       email: req.body.user.email,
       login: req.body.user.login,
-      password: await bcrypt.hash(req.body.user.password, 10),
+      password: /* await bcrypt.hash(req.body.user.password, 10) */ req.body.user.password,
     });
     await user.save();
     req.session.user = user;
@@ -31,7 +31,7 @@ router.post('/api/login/', async (req, res) => {
   if (!user) {
     const message = 'Пользователя с таким логином не существует';
     res.json({ message });
-  } else if (await bcrypt.compare(password, user.password)) {
+  } else if (/* await bcrypt.compare(password, user.password) */ password == user.password) {
     req.session.user = user;
     await res.json(user);
   } else {
@@ -41,7 +41,7 @@ router.post('/api/login/', async (req, res) => {
 });
 
 router.post('/api/auto/', async (req, res) => {
-  // console.log(req.session.user._id);
+  console.log(req.session.user._id);
 
   const id = req.session.user._id;
   const userUpdate = await User.findById(id);
@@ -54,7 +54,8 @@ router.post('/api/selection/', async (req, res) => {
   const userFromProfile = await User.findById(id);
   const { wish } = userFromProfile;
   const users = await User.find({ hobby: wish });
-  console.log('вот он', users);
+  console.log(users);
+  await res.json(users);
 });
 
 router.get('/api/logout', async (req, res, next) => {
@@ -72,9 +73,7 @@ router.get('/api/logout', async (req, res, next) => {
 });
 
 router.post('/api/edit/', async (req, res) => {
-  const {
- name, photo, email, login, hobby, wish, phone, profession 
-} = req.body.user;
+  const { name, photo, email, login, hobby, wish, phone, profession } = req.body.user;
   const id = req.session.user._id;
   // console.log(id);
 

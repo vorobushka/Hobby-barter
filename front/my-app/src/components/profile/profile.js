@@ -5,13 +5,17 @@ import { connect } from 'react-redux';
 import { profileUserAC } from '../../redux/actions';
 
 class Profile extends Component {
-  constructor(props) {
-    super(props);
-  }
-  componentDidMount() {
-    this.getProfile();
+  
+  async componentDidMount() {
+    await this.getProfile();
+    console.log(this.props.user);
+    
+    if (!this.props.user) {
+      this.props.history.push('/login');
+    } 
   }
 
+  
   getProfile = async e => {
     const response = await fetch('/api/auto', {
       method: 'POST',
@@ -21,13 +25,10 @@ class Profile extends Component {
       },
     });
     const userFromBack = await response.json();
-    console.log(userFromBack);
-    
     this.props.profileUser(userFromBack);
   };
 
   logout = async e => {
-    //console.log('внутри logout');
     e.preventDefault()
     await fetch('/api/logout');
     this.props.history.push('/login');
@@ -45,8 +46,6 @@ class Profile extends Component {
 
   render() {
     const userProfile = this.props.user;
-    console.log(userProfile);
-
     return (
       <div className="container emp-profile">
           <div className="row">
@@ -141,8 +140,7 @@ class Profile extends Component {
               </div>
             </div>
           </div>
-        
-        <div className="col-md-2">
+                <div className="col-md-2">
           <button onClick={e => this.findUser(e)}>Найти</button>
         </div>
       </div>

@@ -1,1 +1,2 @@
 export const PROFILE_USER = 'PROFILE_USER';
+export const FIND_TEACHERS = 'FIND_TEACHERS';

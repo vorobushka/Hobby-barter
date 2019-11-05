@@ -19,7 +19,7 @@ class Login extends Component {
     this.setState({ password: e.target.value });
   };
 
-  login = async (e) => {
+  login = async e => {
     e.preventDefault();
     const dataUser = this.state;
     const response = await fetch('/api/login', {
@@ -32,9 +32,13 @@ class Login extends Component {
     });
     const user = await response.json();
     console.log(user);
-    this.props.profileUser(user);
-    this.props.history.push('/alert');
-  }
+    if (user) {
+      this.props.profileUser(user);
+      this.props.history.push('/alert');
+    } else {
+      this.props.history.push('/login');
+    }
+  };
 
   render() {
     return (

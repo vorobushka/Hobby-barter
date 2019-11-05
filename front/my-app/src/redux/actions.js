@@ -1,4 +1,4 @@
-import { PROFILE_USER } from './types';
+import { PROFILE_USER, FIND_TEACHERS } from './types';
 
 const profileUserAC = user => {
   return {
@@ -7,4 +7,11 @@ const profileUserAC = user => {
   };
 };
 
-export { profileUserAC };
+const teachersInStateAC = teachers => {
+  return {
+    type: FIND_TEACHERS,
+    teachers: teachers,
+  };
+};
+
+export { profileUserAC, teachersInStateAC };
