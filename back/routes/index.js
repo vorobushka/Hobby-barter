@@ -41,11 +41,8 @@ router.post('/api/login/', async (req, res) => {
 });
 
 router.post('/api/auto/', async (req, res) => {
-  console.log(req.session.user._id);
-
   const id = req.session.user._id;
   const userUpdate = await User.findById(id);
-  // console.log(userUpdate);
   req.session.user ? res.json(userUpdate) : res.json({ user: 0 });
 });
 
@@ -54,8 +51,22 @@ router.post('/api/selection/', async (req, res) => {
   const userFromProfile = await User.findById(id);
   const { wish } = userFromProfile;
   const users = await User.find({ hobby: wish });
-  console.log(users);
+  // console.log(users);
   await res.json(users);
+});
+
+router.post('/api/fullmatch/', async (req, res) => {
+  console.log('прилетел в fullmatch');
+
+  const id = req.session.user._id;
+  const userFromProfile = await User.findById(id);
+  console.log(userFromProfile);
+
+  const wishProfile = userFromProfile.wish;
+  const hobbyProfile = userFromProfile.hobby;
+  const teachersFullMatch = await User.find({ hobby: wishProfile, wish: hobbyProfile });
+  console.log(teachersFullMatch);
+  await res.json(teachersFullMatch);
 });
 
 router.get('/api/logout', async (req, res, next) => {

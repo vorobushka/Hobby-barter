@@ -1,8 +1,9 @@
-import { PROFILE_USER, FIND_TEACHERS } from './types';
+import { PROFILE_USER, FIND_TEACHERS, TEACHERS_FULLMATCH } from './types';
 
 const initialState = {
   user: '',
   teachers: [],
+  teachersFullMatch: [],
 };
 
 export default function(state = initialState, action) {
@@ -19,6 +20,13 @@ export default function(state = initialState, action) {
         teachers: action.teachers,
       };
     }
+    case TEACHERS_FULLMATCH: {
+      return {
+        ...state,
+        teachersFullMatch: action.teachersFullMatch,
+      };
+    }
+
     default:
       return state;
   }

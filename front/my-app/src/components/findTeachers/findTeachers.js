@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { teachersInStateAC } from '../../redux/actions';
+import { teachersInStateAC, teachersFullMatchAC } from '../../redux/actions';
 import './findTeachers.css';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
@@ -11,10 +11,12 @@ import { Media, BImg, BH5 } from 'bootstrap-4-react';
 
 class FindTeachers extends Component {
   componentDidMount = async () => {
-    await this.findUser();
+    await this.fullMatch();
+    await this.findTeachersWish();
+    
   };
 
-  findUser = async e => {
+  findTeachersWish = async e => {
     const respUser = await fetch('/api/selection', {
       method: 'POST',
       headers: {
@@ -26,6 +28,21 @@ class FindTeachers extends Component {
     this.props.teachersInState(arrUsers);
   };
 
+  fullMatch = async e => {
+    console.log('fullmatch на фронте');
+    
+    const respTeachers = await fetch('/api/fullmatch', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+    const arrTeachers = await respTeachers.json();
+    console.log(arrTeachers);
+    
+    this.props.teachersFullMatch(arrTeachers);
+  }
   //   allTasks = async () => {
   //     const resp = await fetch('/api/');
   //     const data = await resp.json();
@@ -48,7 +65,7 @@ class FindTeachers extends Component {
 
   render() {
     const teachers = this.props.teachers;
-    console.log(teachers);
+    // console.log(teachers);
     const elements = teachers.map(item => {
       return (
         <div>
@@ -75,7 +92,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     teachersInState: teachers => dispatch(teachersInStateAC(teachers)),
-    // deleteTask: task => dispatch(deleteTaskAC(task)),
+    teachersFullMatch: task => dispatch(teachersFullMatchAC(task)),
   };
 }
 
