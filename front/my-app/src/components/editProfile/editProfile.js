@@ -85,7 +85,7 @@ export default class EditProfile extends Component {
               <div className="profile-img">
   
                 <div className="file btn btn-lg btn-primary">
-                  Change Photo
+                   Добавить фото
                                 <input type="file" name="file" />
                 </div>
               </div>
@@ -94,13 +94,13 @@ export default class EditProfile extends Component {
           <div className="row">
             <div className="col-md-4">
               <div className="profile-work">
-                <p>I CAN TEACH YOU</p>
+                <p>Я могу научить тебя</p>
                 <input type="text" className="profile-edit-btn" name="btnAddMore" placeholder="Edit work link" onChange={this.hobbyInState}/>
               </div>
             </div>
             <div className="col-md-4">
               <div className="profile-work">
-                <p>I WANT TO LEARN</p>
+                <p>Я хочу научиться</p>
                 <input type="text" className="profile-edit-btn" name="btnAddMore" placeholder="Edit wishes" onChange={this.wishInState}/>
               </div>
             </div>
@@ -109,7 +109,7 @@ export default class EditProfile extends Component {
                 <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Name</label>
+                      <label>Имя</label>
                       <input className="profile-edit-btn" name="btnAddMore" placeholder="                     Edit Name" onChange={this.nameInState}/>
                     </div>
                     <div className="col-md-6">
@@ -118,7 +118,7 @@ export default class EditProfile extends Component {
                   </div>
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Email</label>
+                      <label>Почта</label>
                       <input className="profile-edit-btn" name="btnAddMore" placeholder="                      Edit email" onChange={this.emailInState} />
                     </div>
                     <div className="col-md-6">
@@ -127,17 +127,14 @@ export default class EditProfile extends Component {
                   </div>
                   <div className="row">
                     <div className="col-md-6">
-                      <label>Phone</label>
+                      <label>Номер</label>
                       <input className="profile-edit-btn" name="btnAddMore" placeholder="                    Edit phone" onChange={this.phoneInState} />
                     </div>
                     <div className="col-md-6">
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col-md-6">
-                      <label>Profession</label>
-                      <input type="text" class="profile-edit-btn" name="btnAddMore" placeholder="            Edit professional" onChange={this.professionInState} />
-                    </div>
+                   
                     <div className="col-md-6">
                     </div>
                   </div>
@@ -147,7 +144,7 @@ export default class EditProfile extends Component {
               </div>
             </div>
           </div>
-          <button>Submit</button>
+          <button>Отправить</button>
         </form>
       </div>
 

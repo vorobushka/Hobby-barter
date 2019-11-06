@@ -47,16 +47,16 @@ class StartPage extends Component {
             <Collapse navbar id="navbarSupportedContent">
               <Navbar.Nav mr="auto">
                 <Nav.Item active>
-                  <Nav.Link href="#">Home</Nav.Link>
+                  <Nav.Link href="#"></Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link>
-                    <Link to="/login">Login</Link>
+                    <Link to="/login">Логин</Link>
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item dropdown>
                   <Nav.Link>
-                    <Link to="/registration">Registration</Link>
+                    <Link to="/registration">Регистрация</Link>
                   </Nav.Link>
                   <Dropdown.Menu>
                     <Dropdown.Item>Action</Dropdown.Item>
@@ -67,9 +67,9 @@ class StartPage extends Component {
                 </Nav.Item>
               </Navbar.Nav>
               <Form onSubmit={this.searchTeacher} inline my="2 lg-0">
-                <Form.Input type="search" onChange={this.searchInState} placeholder="Search" mr="sm-2" />
+                <Form.Input type="search" onChange={this.searchInState} placeholder="Поиск" mr="sm-2" />
                 <Button outline success my="2 sm-0">
-                  Search
+                  Поиск учителя
                 </Button>
               </Form>
             </Collapse>

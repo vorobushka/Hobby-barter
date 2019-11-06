@@ -47,23 +47,23 @@ class Registration extends Component {
               type="email"
               className="form-control"
               name="email"
-              placeholder="email"
+              placeholder="введите почту"
               onChange={this.emailInState}
             />
           </div>
           <div className="form-group">
-            <input type="text" className="form-control" name="login" placeholder="login" onChange={this.loginInState} />
+            <input type="text" className="form-control" name="login" placeholder="введите логин" onChange={this.loginInState} />
           </div>
           <div className="form-group">
             <input
               type="password"
               name="password"
               className="form-control"
-              placeholder="password"
+              placeholder="введите пароль" 
               onChange={this.passwordInState}
             />
           </div>
-          <button>Submit</button>
+          <button>Отправить</button>
         </form>
       </div>
     );

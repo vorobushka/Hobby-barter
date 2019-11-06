@@ -49,7 +49,7 @@ class Login extends Component {
               type="text"
               className="form-control"
               name="login"
-              placeholder="login"
+              placeholder="введите логин"
               onChange={this.loginInStateLogin}
             />
           </div>
@@ -58,12 +58,12 @@ class Login extends Component {
               type="password"
               name="password"
               className="form-control"
-              placeholder="password"
+              placeholder="введите пароль"
               onChange={this.passwordInStateLogin}
             />
           </div>
           <button type="submit" className="btn btn-primary mb-2">
-            Submit
+            Отправить
           </button>
         </form>
       </div>
