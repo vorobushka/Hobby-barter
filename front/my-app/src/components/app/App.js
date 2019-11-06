@@ -13,7 +13,7 @@ export default class App extends Component {
     return (
       <div>
         <Router>
-          <Route path="/" component={StartPage} />
+          <Route exact path="/" component={StartPage} />
           <Route path="/login" component={Login} />
           <Route path="/profile" component={Profile} />
           <Route path="/registration" component={Registration} />
