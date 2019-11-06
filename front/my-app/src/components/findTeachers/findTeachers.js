@@ -67,8 +67,8 @@ class FindTeachers extends Component {
     console.log(this.props.teachersFull);
     const elTeachersFull = full.map(item => {
       return (
-        <div style={{ backgroundColor: 'white', width: '300px' }}>
-          <Media border="info" p="3" mb="3">
+        <div style={{ backgroundColor: 'white', width: '300px'}}>
+          <Media border="success" p="3" mb="3">
             <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
             <Media.Body>
               <BH5 mt="0">{item.name}</BH5>
