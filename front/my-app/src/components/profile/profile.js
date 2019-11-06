@@ -29,7 +29,7 @@ class Profile extends Component {
   logout = async e => {
     e.preventDefault();
     await fetch('/api/logout');
-    this.props.history.push('/login');
+    this.props.history.push('/');
   };
 
   findUser = async e => {
@@ -108,7 +108,7 @@ class Profile extends Component {
                   <div className="col-md-6">
                     <label>Name</label>
                   </div>
-                  <div className="col-md-6">{userProfile ? <p>{userProfile.login}</p> : <></>}</div>
+                  <div className="col-md-6">{userProfile ? <p>{userProfile.name}</p> : <></>}</div>
                 </div>
                 <div className="row">
                   <div className="col-md-6">
@@ -121,25 +121,16 @@ class Profile extends Component {
                     <label>Phone</label>
                   </div>
                   <div className="col-md-6">
-                    <div className="col-md-6">{userProfile ? <p>{userProfile.phone}</p> : <></>}</div>
+                    <div className="col-md-6">{userProfile ? <p>{userProfile.phone}</p> :<></>}</div>
                   </div>
                 </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Profession</label>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="col-md-6">{userProfile ? <p>{userProfile.profession}</p> : <></>}</div>
-                  </div>
-                </div>
+              
               </div>
               <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
             </div>
           </div>
         </div>
-        <div className="col-md-2">
-          <button onClick={e => this.findUser(e)}>Найти</button>
-        </div>
+  
       </div>
     );
   }
