@@ -1,6 +1,6 @@
 import './startpage.css';
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 import { Navbar, Nav, Button, Dropdown, Form, Collapse } from 'bootstrap-4-react';
 
 export default class StartPage extends Component {
@@ -18,10 +18,14 @@ export default class StartPage extends Component {
               <Nav.Link href="#">Home</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#">Login</Nav.Link>
+              <Nav.Link> 
+              <Link to="/login">Login</Link>
+              </Nav.Link>
             </Nav.Item>
             <Nav.Item dropdown>
-              <Nav.Link dropdownToggle>Registration</Nav.Link>
+              <Nav.Link>
+              <Link to="/registration">Registration</Link>
+              </Nav.Link>
               <Dropdown.Menu>
                 <Dropdown.Item>Action</Dropdown.Item>
                 <Dropdown.Item>Another action</Dropdown.Item>
