@@ -47,6 +47,7 @@ class Profile extends Component {
     });
     const searchTeachers = await respSearch.json();
     this.props.teachersInStoreFromSearch(searchTeachers);
+    this.props.history.push('/findTeachers');
   };
 
   logout = async e => {
@@ -66,14 +67,21 @@ class Profile extends Component {
   };
 
   render() {
+    const styles = {
+      height: '80vh',
+      padding: '5%',
+      'margin-top': '10%',
+      'border-radius': '0.5rem',
+      background: '#fff'
+    }
     const userProfile = this.props.user;
     return (
-      <div className="container emp-profile">
+      <div className="container emp-profile" style = {styles}>
         <div className="row">
           <div className="col-md-4">
             <div className="profile-img">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                src="https://i.pinimg.com/736x/3f/68/41/3f6841442ce599874f3d247ae438736b.jpg"
                 alt=""
               />
               <div className="file btn btn-lg btn-primary">
@@ -128,10 +136,10 @@ class Profile extends Component {
         <div className="row">
           <div className="col-md-4">
             <div className="profile-work">
-              <p>HOBBY: </p>
-              <div>{userProfile ? <p>{userProfile.hobby}</p> : <></>}</div>
-              <p>WISHES: </p>
-              <div>{userProfile ? <p>{userProfile.wish}</p> : <></>}</div>
+              <p> I CAN TEACH YOU: </p>
+              <div>{userProfile ? <p style={{ 'font-size': '20px' }}>{userProfile.hobby}</p> : <></>}</div>
+              <p>I WANT TO LEARN: </p>
+              <div>{userProfile ? <p style={{ 'font-size': '20px' }}>{userProfile.wish}</p> : <></>}</div>
             </div>
           </div>
           <div className="col-md-8">

@@ -83,7 +83,7 @@ export default class EditProfile extends Component {
           <div className="row">
             <div className="col-md-4">
               <div className="profile-img">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
+  
                 <div className="file btn btn-lg btn-primary">
                   Change Photo
                                 <input type="file" name="file" />
@@ -94,7 +94,7 @@ export default class EditProfile extends Component {
           <div className="row">
             <div className="col-md-4">
               <div className="profile-work">
-                <p>HOBBY</p>
+                <p>I CAN TEACH YOU</p>
                 <input type="text" className="profile-edit-btn" name="btnAddMore" placeholder="Edit work link" onChange={this.hobbyInState}/>
               </div>
             </div>
@@ -136,7 +136,7 @@ export default class EditProfile extends Component {
                   <div className="row">
                     <div className="col-md-6">
                       <label>Profession</label>
-                      <input type="text" class="profile-edit-btn" name="btnAddMore" placeholder="Edit professional" onChange={this.professionInState} />
+                      <input type="text" class="profile-edit-btn" name="btnAddMore" placeholder="            Edit professional" onChange={this.professionInState} />
                     </div>
                     <div className="col-md-6">
                     </div>
