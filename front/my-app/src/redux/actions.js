@@ -1,4 +1,4 @@
-import { PROFILE_USER, FIND_TEACHERS, TEACHERS_FULLMATCH } from './types';
+import { PROFILE_USER, FIND_TEACHERS, TEACHERS_FULLMATCH, TEACHERS_FROMSEARCH } from './types';
 
 const profileUserAC = user => {
   return {
@@ -17,8 +17,15 @@ const teachersInStateAC = teachers => {
 const teachersFullMatchAC = teachersFull => {
   return {
     type: TEACHERS_FULLMATCH,
-    teachersFullMatch: teachersFull,
+    teachersFull: teachersFull,
   };
 };
 
-export { profileUserAC, teachersInStateAC, teachersFullMatchAC };
+const teachersInStoreFromSearchAC = teachersFromSearch => {
+  return {
+    type: TEACHERS_FROMSEARCH,
+    teachersFromSearch: teachersFromSearch,
+  };
+};
+
+export { profileUserAC, teachersInStateAC, teachersFullMatchAC, teachersInStoreFromSearchAC };

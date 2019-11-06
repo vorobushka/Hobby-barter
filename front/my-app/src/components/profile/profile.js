@@ -2,13 +2,17 @@ import './profile.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { profileUserAC } from '../../redux/actions';
+import { profileUserAC, teachersInStoreFromSearchAC } from '../../redux/actions';
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: null,
+    };
+  }
   async componentDidMount() {
     await this.getProfile();
-    console.log(this.props.user);
-
     if (!this.props.user) {
       this.props.history.push('/login');
     }
@@ -24,6 +28,25 @@ class Profile extends Component {
     });
     const userFromBack = await response.json();
     this.props.profileUser(userFromBack);
+  };
+
+  searchInState = e => {
+    this.setState({ search: e.target.value });
+  };
+  searchTeacher = async e => {
+    e.preventDefault();
+    const { search } = this.state;
+    console.log(search);
+
+    const respSearch = await fetch('/api/selection', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+    const searchTeachers = await respSearch.json();
+    this.props.teachersInStoreFromSearch(searchTeachers);
   };
 
   logout = async e => {
@@ -65,8 +88,18 @@ class Profile extends Component {
                 <li className="nav-item">
                   <nav class="navbar navbar-light bg-light">
                     <form className="form-inline">
-                      <input className="form-control mr-sm-2" type="text" placeholder="Search" />
-                      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+                      <input
+                        className="form-control mr-sm-2"
+                        type="text"
+                        name="search"
+                        onChange={this.searchInState}
+                        placeholder="Search"
+                      />
+                      <button
+                        className="btn btn-outline-success my-2 my-sm-0"
+                        onClick={e => this.searchTeacher(e)}
+                        type="submit"
+                      >
                         Search
                       </button>
                     </form>
@@ -145,6 +178,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     profileUser: user => dispatch(profileUserAC(user)),
+    teachersInStoreFromSearch: teachersSearch => dispatch(teachersInStoreFromSearchAC(teachersSearch)),
   };
 }
 

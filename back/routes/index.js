@@ -67,6 +67,11 @@ router.post('/api/fullmatch/', async (req, res) => {
   await res.json(teachersFullMatch);
 });
 
+router.post('/api/searchTeacher', async (req, res) => {
+  const searchTeachers = await User.find({ hobby: req.body.searchBody });
+  await res.json(searchTeachers);
+});
+
 router.get('/api/logout', async (req, res, next) => {
   if (req.session.user) {
     try {
