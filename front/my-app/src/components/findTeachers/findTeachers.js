@@ -8,6 +8,8 @@ import Col from 'react-bootstrap/Col';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Alert } from 'bootstrap-4-react';
 import { Media, BImg, BH5 } from 'bootstrap-4-react';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav, Button, Dropdown, Form, Collapse } from 'bootstrap-4-react';
 
 class FindTeachers extends Component {
   componentDidMount = async () => {
@@ -72,7 +74,10 @@ class FindTeachers extends Component {
           <Media border="success" p="3" mb="3">
             <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
             <Media.Body>
-              <BH5 mt="0">{item.name}</BH5>I can teach You {item.hobby}! <br /> Hi, I would like to learn {item.wish}!
+              <p>SkillBarter</p>
+              <BH5 mt="0">{item.name}</BH5>
+              Hi, I would like to learn {item.wish}! I can teach You {item.hobby}!<br /> 
+              Number:{item.phone}
             </Media.Body>
           </Media>
         </div>
@@ -86,7 +91,8 @@ class FindTeachers extends Component {
           <Media border="info" p="3" mb="3">
             <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
             <Media.Body>
-              <BH5 mt="0">{item.name}</BH5>I can teach You {item.hobby}! <br/> Hi, I would like to learn {item.wish}!
+              <BH5 mt="0">{item.name}</BH5>I can teach You {item.hobby}! <br /> Hi, I would like to learn {item.wish}!<br /> 
+            Number:{item.phone}
             </Media.Body>
           </Media>
         </div>
@@ -110,6 +116,42 @@ class FindTeachers extends Component {
 
     return (
       <div>
+        
+        <Navbar expand="lg" light bg="light">
+          <Navbar.Brand href="#"></Navbar.Brand>
+          <Navbar.Toggler target="#navbarSupportedContent" />
+          <Collapse navbar id="navbarSupportedContent">
+            <Navbar.Nav mr="auto">
+              <Nav.Item active>
+                <Nav.Link>
+                  <Link to="/profile">Profile</Link>
+                  </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link>
+                  <Link to="/login">Login</Link>
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item dropdown>
+                <Nav.Link>
+                  <Link to="/registration">Registration</Link>
+                </Nav.Link>
+                <Dropdown.Menu>
+                  <Dropdown.Item>Action</Dropdown.Item>
+                  <Dropdown.Item>Another action</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item>Something else</Dropdown.Item>
+                </Dropdown.Menu>
+              </Nav.Item>
+            </Navbar.Nav>
+            <Form onSubmit={this.searchTeacher} inline my="2 lg-0">
+              <Form.Input type="search" onChange={this.searchInState} placeholder="Search" mr="sm-2" />
+              <Button outline success my="2 sm-0">
+                Search
+                </Button>
+            </Form>
+          </Collapse>
+        </Navbar>
         <div>{elTeachersFromSearch}</div>
         <div>{elTeachersFull}</div>
         <div>{elTeachers}</div>

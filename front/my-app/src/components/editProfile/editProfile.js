@@ -65,39 +65,46 @@ export default class EditProfile extends Component {
       body: JSON.stringify({ user: dataUser }),
     });
     const user = await response.json();
-    console.log(user);
+    this.props.history.push('/profile');
   };
 
 
   render() {
+    const styles = {
+    height: '80vh',
+    padding:'5%',
+    'margin-top': '10%',
+    'border-radius': '0.5rem',
+    background: '#fff'
+    }
     return (
-      <div class="container emp-profile">
+      <div className="container emp-profile" style={styles}>
         <form onSubmit={this.editProfile}>
-          <div class="row">
-            <div class="col-md-4">
-              <div class="profile-img">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
-                <div class="file btn btn-lg btn-primary">
+          <div className="row">
+            <div className="col-md-4">
+              <div className="profile-img">
+  
+                <div className="file btn btn-lg btn-primary">
                   Change Photo
                                 <input type="file" name="file" />
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-4">
-              <div class="profile-work">
-                <p>HOBBY</p>
+          <div className="row">
+            <div className="col-md-4">
+              <div className="profile-work">
+                <p>I CAN TEACH YOU</p>
                 <input type="text" className="profile-edit-btn" name="btnAddMore" placeholder="Edit work link" onChange={this.hobbyInState}/>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="profile-work">
+            <div className="col-md-4">
+              <div className="profile-work">
                 <p>I WANT TO LEARN</p>
                 <input type="text" className="profile-edit-btn" name="btnAddMore" placeholder="Edit wishes" onChange={this.wishInState}/>
               </div>
             </div>
-            <div class="col-md-8">
+            <div className="col-md-8">
               <div className="tab-content profile-tab" id="myTabContent">
                 <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div className="row">
@@ -129,7 +136,7 @@ export default class EditProfile extends Component {
                   <div className="row">
                     <div className="col-md-6">
                       <label>Profession</label>
-                      <input type="text" class="profile-edit-btn" name="btnAddMore" placeholder="Edit professional" onChange={this.professionInState} />
+                      <input type="text" class="profile-edit-btn" name="btnAddMore" placeholder="            Edit professional" onChange={this.professionInState} />
                     </div>
                     <div className="col-md-6">
                     </div>
