@@ -11,14 +11,8 @@ import { Media, BImg, BH5 } from 'bootstrap-4-react';
 
 class FindTeachers extends Component {
   componentDidMount = async () => {
-    console.log('1');
     await this.fullMatch();
-    console.log('2');
-    // await this.fullMatch();
     await this.findTeachersWish();
-    console.log('3');
-
-    
   };
 
   findTeachersWish = async e => {
@@ -35,7 +29,7 @@ class FindTeachers extends Component {
 
   fullMatch = async e => {
     console.log('fullmatch на фронте');
-    
+
     const respTeachers = await fetch('/api/fullmatch', {
       method: 'POST',
       headers: {
@@ -44,10 +38,10 @@ class FindTeachers extends Component {
       },
     });
     const arrTeachers = await respTeachers.json();
-    console.log(arrTeachers);
-    
+    // console.log(arrTeachers);
+
     this.props.teachersFullMatch(arrTeachers);
-  }
+  };
   //   allTasks = async () => {
   //     const resp = await fetch('/api/');
   //     const data = await resp.json();
@@ -69,11 +63,11 @@ class FindTeachers extends Component {
   //   };
 
   render() {
-    const teachers = this.props.teachers;
-    // console.log(teachers);
-    const elements = teachers.map(item => {
+    const full = this.props.teachersFull;
+    console.log(this.props.teachersFull);
+    const elTeachersFull = full.map(item => {
       return (
-        <div>
+        <div style={{ backgroundColor: 'white', width: '300px' }}>
           <Media border="info" p="3" mb="3">
             <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
             <Media.Body>
@@ -84,13 +78,33 @@ class FindTeachers extends Component {
         </div>
       );
     });
-    return <div>{elements}</div>;
+
+    const teachers = this.props.teachers;
+    const elTeachers = teachers.map(item => {
+      return (
+        <div style={{ backgroundColor: 'white', width: '300px' }}>
+          <Media border="info" p="3" mb="3">
+            <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
+            <Media.Body>
+              <BH5 mt="0">{item.name}</BH5>I can teach You {item.hobby}! <br/> Hi, I would like to learn {item.wish}!
+            </Media.Body>
+          </Media>
+        </div>
+      );
+    });
+    return (
+      <div>
+        <div>{elTeachersFull}</div>
+        <div>{elTeachers}</div>
+      </div>
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
     teachers: state.teachers,
+    teachersFull: state.teachersFull,
   };
 }
 

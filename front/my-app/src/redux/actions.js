@@ -17,7 +17,7 @@ const teachersInStateAC = teachers => {
 const teachersFullMatchAC = teachersFull => {
   return {
     type: TEACHERS_FULLMATCH,
-    teachersFullMatch: teachersFull,
+    teachersFull: teachersFull,
   };
 };
 
