@@ -1,0 +1,18 @@
+.emp-profile{
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 15%;
+    border-radius: 0.5rem;
+    background: #fff;
+    height: 70vh;
+}
+.shrift {
+  padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 15%;
+    margin-right: 10%;
+    margin-left: -10%
+}
+body{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}

@@ -6,12 +6,14 @@ import Alert from '../alert';
 import Profile from '../profile';
 import EditProfile from '../editProfile';
 import FindTeachers from '../findTeachers/findTeachers';
+import StartPage from '../startpage/startpage';
 
 export default class App extends Component {
   render() {
     return (
       <div>
         <Router>
+          <Route path="/" component={StartPage} />
           <Route path="/login" component={Login} />
           <Route path="/profile" component={Profile} />
           <Route path="/registration" component={Registration} />
