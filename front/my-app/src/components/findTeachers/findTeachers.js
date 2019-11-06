@@ -68,12 +68,11 @@ class FindTeachers extends Component {
     console.log(this.props.teachersFull);
     const elTeachersFull = full.map(item => {
       return (
-        <div style={{ backgroundColor: 'white', width: '300px'}}>
+        <div style={{ backgroundColor: 'white', width: '300px' }}>
           <Media border="success" p="3" mb="3">
             <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
             <Media.Body>
-              <BH5 mt="0">{item.name}</BH5>
-              Hi, I would like to learn {item.wish}! I can teach You {item.hobby}!
+              <BH5 mt="0">{item.name}</BH5>I can teach You {item.hobby}! <br /> Hi, I would like to learn {item.wish}!
             </Media.Body>
           </Media>
         </div>
@@ -94,25 +93,26 @@ class FindTeachers extends Component {
       );
     });
 
-  //  const teachersT = this.props.teachersFromSearch;
-  //  const elTeachers = teachersT.map(item => {
-  //    return (
-  //      <div style={{ backgroundColor: 'white', width: '300px' }}>
-  //        <Media border="info" p="3" mb="3">
-  //          <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
-  //          <Media.Body>
-  //            <BH5 mt="0">{item.name}</BH5>I can teach You {item.hobby}! <br /> Hi, I would like to learn {item.wish}!
-  //          </Media.Body>
-  //        </Media>
-  //      </div>
-  //    );
-  //  });
+   const teachersT = this.props.teachersFromSearch;
+   
+   const elTeachersFromSearch = teachersT.map(item => {
+     return (
+       <div style={{ backgroundColor: 'white', width: '300px' }}>
+         <Media border="info" p="3" mb="3">
+           <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
+           <Media.Body>
+             <BH5 mt="0">{item.name}</BH5>I can teach You {item.hobby}! <br /> Hi, I would like to learn {item.wish}!
+           </Media.Body>
+         </Media>
+       </div>
+     );
+   });
 
     return (
       <div>
+        <div>{elTeachersFromSearch}</div>
         <div>{elTeachersFull}</div>
         <div>{elTeachers}</div>
-        {/* <div>{searchT}</div> */}
       </div>
     );
   }
@@ -122,6 +122,7 @@ function mapStateToProps(state) {
   return {
     teachers: state.teachers,
     teachersFull: state.teachersFull,
+    teachersFromSearch: state.teachersFromSearch,
   };
 }
 
