@@ -27,6 +27,7 @@ class FindTeachers extends Component {
     this.props.teachersInState(arrUsers);
   };
 
+
   fullMatch = async e => {
     console.log('fullmatch на фронте');
 
