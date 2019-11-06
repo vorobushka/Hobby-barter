@@ -11,8 +11,13 @@ import { Media, BImg, BH5 } from 'bootstrap-4-react';
 
 class FindTeachers extends Component {
   componentDidMount = async () => {
+    console.log('1');
     await this.fullMatch();
+    console.log('2');
+    // await this.fullMatch();
     await this.findTeachersWish();
+    console.log('3');
+
     
   };
 

@@ -51,21 +51,19 @@ router.post('/api/selection/', async (req, res) => {
   const userFromProfile = await User.findById(id);
   const { wish } = userFromProfile;
   const users = await User.find({ hobby: wish });
+  console.log('прилетел в selection');
   // console.log(users);
   await res.json(users);
 });
 
 router.post('/api/fullmatch/', async (req, res) => {
-  console.log('прилетел в fullmatch');
-
   const id = req.session.user._id;
   const userFromProfile = await User.findById(id);
-  console.log(userFromProfile);
-
   const wishProfile = userFromProfile.wish;
   const hobbyProfile = userFromProfile.hobby;
   const teachersFullMatch = await User.find({ hobby: wishProfile, wish: hobbyProfile });
-  console.log(teachersFullMatch);
+  console.log('прилетел в fullmatch');
+  // console.log(teachersFullMatch);
   await res.json(teachersFullMatch);
 });
 
@@ -84,7 +82,9 @@ router.get('/api/logout', async (req, res, next) => {
 });
 
 router.post('/api/edit/', async (req, res) => {
-  const { name, photo, email, login, hobby, wish, phone, profession } = req.body.user;
+  const {
+ name, photo, email, login, hobby, wish, phone, profession 
+} = req.body.user;
   const id = req.session.user._id;
   // console.log(id);
 
