@@ -5,8 +5,15 @@ import './findTeachers.css';
 import { Media, BImg, BH5 } from 'bootstrap-4-react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Button, Dropdown, Form, Collapse } from 'bootstrap-4-react';
+import { teachersInStoreFromSearchAC } from '../../redux/actions';
 
 class FindTeachers extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: null,
+    };
+  }
   componentDidMount = async () => {
     await this.fullMatch();
     await this.findTeachersWish();
@@ -14,6 +21,9 @@ class FindTeachers extends Component {
     if (teachers.length === 0 && teachersFull.length === 0 && teachersFromSearch.length === 0) {
       this.props.history.push('/profile');
     }
+  };
+  searchInState = e => {
+    this.setState({ search: e.target.value });
   };
 
   findTeachersWish = async e => {
@@ -29,8 +39,6 @@ class FindTeachers extends Component {
   };
 
   fullMatch = async e => {
-    console.log('fullmatch на фронте');
-
     const respTeachers = await fetch('/api/fullmatch', {
       method: 'POST',
       headers: {
@@ -42,6 +50,24 @@ class FindTeachers extends Component {
     console.log(arrTeachers);
 
     this.props.teachersFullMatch(arrTeachers);
+  };
+
+  searchTeacher = async e => {
+    e.preventDefault();
+    const { search } = this.state;
+    console.log(search);
+
+    const respSearch = await fetch('/api/searchTeacher', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ searchBody: search }),
+    });
+    const searchTeachers = await respSearch.json();
+    this.props.teachersInStoreFromSearch(searchTeachers);
+    this.props.history.push('/findTeachers');
   };
 
   render() {
@@ -152,6 +178,7 @@ function mapDispatchToProps(dispatch) {
   return {
     teachersInState: teachers => dispatch(teachersInStateAC(teachers)),
     teachersFullMatch: task => dispatch(teachersFullMatchAC(task)),
+    teachersInStoreFromSearch: teachers => dispatch(teachersInStoreFromSearchAC(teachers)),
   };
 }
 
