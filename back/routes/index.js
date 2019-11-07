@@ -18,6 +18,7 @@ router.post('/api/registration', async (req, res) => {
     await user.save();
     req.session.user = user;
     res.json(user);
+    console.log(user);
   } catch (error) {
     res.json(error);
   }
@@ -49,6 +50,9 @@ router.post('/api/auto/', async (req, res) => {
 });
 
 router.post('/api/selection/', async (req, res) => {
+  if (!req.session.user) {
+    res.json({});
+  }
   const id = req.session.user._id;
   const userFromProfile = await User.findById(id);
   const { wish } = userFromProfile;
@@ -59,12 +63,14 @@ router.post('/api/selection/', async (req, res) => {
 });
 
 router.post('/api/fullmatch/', async (req, res) => {
+  if (!req.session.user) {
+    res.json({});
+  }
   const id = req.session.user._id;
   const userFromProfile = await User.findById(id);
   const wishProfile = userFromProfile.wish;
   const hobbyProfile = userFromProfile.hobby;
   const teachersFullMatch = await User.find({ hobby: wishProfile, wish: hobbyProfile });
-  console.log('прилетел в fullmatch');
   // console.log(teachersFullMatch);
   await res.json(teachersFullMatch);
 });

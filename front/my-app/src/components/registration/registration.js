@@ -35,6 +35,8 @@ class Registration extends Component {
       body: JSON.stringify({ user: dataUser }),
     });
     const user = await response.json();
+    console.log(user);
+    
     this.props.profileUser(user);
     this.props.history.push('/alert');
   };
@@ -64,7 +66,7 @@ class Registration extends Component {
               onChange={this.passwordInState}
             />
           </div>
-          <button type="button" class="btn btn-light">Отправить</button>
+          <button type="submit" class="btn btn-light">Отправить</button>
         </form>
       </div>
     );
