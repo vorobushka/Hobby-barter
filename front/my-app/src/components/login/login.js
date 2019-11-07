@@ -45,7 +45,14 @@ class Login extends Component {
     return (
 
 
-      <div className="container div-form">
+      <div className="container div-form" style={{
+        width: '100%',
+        height: '100vh',
+        display: 'flex',
+        'align-items': 'center',
+        'justify-content': 'center'
+  }}>
+
         <div className="d-flex justify-content-center h-100">
           <div className="card">
             <div className="card-header">
