@@ -71,6 +71,7 @@ router.post('/api/fullmatch/', async (req, res) => {
 
 router.post('/api/searchTeacher', async (req, res) => {
   const searchTeachers = await User.find({ hobby: req.body.searchBody });
+  console.log(searchTeachers);
   await res.json(searchTeachers);
 });
 
@@ -90,20 +91,18 @@ router.get('/api/logout', async (req, res, next) => {
 
 router.post('/api/edit/', async (req, res) => {
   const {
- name, photo, email, login, hobby, wish, phone, profession 
+ name, email, hobby, wish, phone 
 } = req.body.user;
   const id = req.session.user._id;
-  // console.log(id);
 
   const user = await User.findByIdAndUpdate(id, {
-    name,
-    photo,
-    email,
-    login,
-    hobby,
-    wish,
-    phone,
-    profession,
+    $set: {
+      name,
+      email,
+      hobby,
+      wish,
+      phone,
+    },
   });
   await res.json(user);
 });
