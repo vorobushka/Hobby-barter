@@ -41,27 +41,6 @@ class FindTeachers extends Component {
     this.props.teachersFullMatch(arrTeachers);
   };
 
-  
-  //   allTasks = async () => {
-  //     const resp = await fetch('/api/');
-  //     const data = await resp.json();
-  //     this.props.fillState(data);
-  //   };
-
-  //   deleteTask = async id => {
-  //     console.log(id);
-  //     const resp = await fetch('/api/', {
-  //       method: 'DELETE',
-  //       headers: {
-  //         Accept: 'application/json',
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ deleteTaskId: id }),
-  //     });
-  //     const newTasks = await resp.json();
-  //     this.props.deleteTask(newTasks);
-  //   };
-
   render() {
     const full = this.props.teachersFull;
     console.log(this.props.teachersFull);
