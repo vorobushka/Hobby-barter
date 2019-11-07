@@ -2,7 +2,7 @@ import './startpage.css';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, Button, Dropdown, Form, Collapse } from 'bootstrap-4-react';
+import { Navbar, Nav, Button, Dropdown, Form, Collapse, FormControl  } from 'bootstrap-4-react';
 import { teachersInStoreFromSearchAC } from '../../redux/actions';
 
 
@@ -37,12 +37,28 @@ class StartPage extends Component {
   };
 
   render() {
-    // console.log(this.state);
+
 
     return (
-      <div>
-        <div className="container emp-profile">
-          <Navbar expand="lg" light bg="light">
+  <div>
+    <Navbar bg="dark" variant="dark">
+          <Nav className="mr-auto">
+            <Nav><div className="logo">СкиллБартер</div></Nav>
+            <Nav.Link >
+              <Link to="/login">Логин</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/registration">Регистрация</Link>
+            </Nav.Link>
+          </Nav>
+          <Form onSubmit={this.searchTeacher} inline my="2 lg-0">
+            <Form.Input type="search" onChange={this.searchInState} placeholder="Поиск" mr="sm-2" />
+            <Button outline success my="2 sm-0">
+              Поиск учителя
+                </Button>
+          </Form>
+        </Navbar>
+          {/* <Navbar expand="lg" light bg="light">
             <Navbar.Brand href="#"></Navbar.Brand>
             <Navbar.Toggler target="#navbarSupportedContent" />
             <Collapse navbar id="navbarSupportedContent">
@@ -74,33 +90,40 @@ class StartPage extends Component {
                 </Button>
               </Form>
             </Collapse>
-          </Navbar>
+          </Navbar>  */}
+        <div className="container">
           <div className="row">
-            <div className="col">
-              <img src="https://cache3.youla.io/files/images/360_360/5c/af/5caf5fb6e7d7ce4fad0f3833.jpg" />
-            </div>
-            <div className="col">
+  
+            <div className="col-sm">
               <div
                 className="shrift"
                 style={{
-                  'font-family': 'Lobster',
+                  'font-family': 'Raleway',
                   'font-weight': 'bold',
-                  'font-size': '18px',
-                }}
-              >
-                Мечтаешь научиться программировать или выучить английский, стать гуру фотошопа или же монтировать крутые
-                видеоролики и выкладывать на ютюб? Хочешь научиться правильно обрабатывать звук, рисовать, разговаривать
-                на иностранном языке, петь, танцевать, но онлайн-курсы, студии и школы запрашивают баснословные деньги,
-                а просмотры видео на ютюбе не дают должных результатов? НАЙДЕНО РЕШЕНИЕ. Это приложение для тех, кто
-                хочет научиться чему-то новому, взамен предложив свои умения.
+                  'font-size': '22px',
+                  'color': 'rgb(230, 224, 240)'
+                          }}
+                        >
+                          Мечтаешь научиться программировать или выучить английский, стать гуру фотошопа или же монтировать крутые
+                          видеоролики и выкладывать на ютюб? 
+                          Хочешь научиться правильно обрабатывать звук, рисовать, разговаривать
+                          на иностранном языке, петь, танцевать, но онлайн-курсы, студии и школы запрашивают баснословные деньги,
+                          а просмотры видео на ютюбе не дают должных результатов? 
+                          НАЙДЕНО РЕШЕНИЕ. Это приложение для тех, кто
+                          хочет научиться чему-то новому, взамен предложив свои умения.
               </div>
             </div>
           </div>
         </div>
-      </div>
+        </div>
+     
     );
   }
 }
+
+
+
+
 
 function mapStateToProps(state) {
   return {
@@ -118,3 +141,8 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(StartPage);
+
+
+
+
+
