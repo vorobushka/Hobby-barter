@@ -36,10 +36,12 @@ class FindTeachers extends Component {
       },
     });
     const arrTeachers = await respTeachers.json();
-    // console.log(arrTeachers);
+    console.log(arrTeachers);
 
     this.props.teachersFullMatch(arrTeachers);
   };
+
+  
   //   allTasks = async () => {
   //     const resp = await fetch('/api/');
   //     const data = await resp.json();
@@ -95,14 +97,13 @@ class FindTeachers extends Component {
     });
 
    const teachersT = this.props.teachersFromSearch;
-   
    const elTeachersFromSearch = teachersT.map(item => {
      return (
        <div style={{ backgroundColor: 'white', width: '300px' }}>
          <Media border="info" p="3" mb="3">
            <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
            <Media.Body>
-             <BH5 mt="0">{item.name}</BH5>I can teach You {item.hobby}! <br /> Hi, I would like to learn {item.wish}!
+             <BH5 mt="0">{item.name}</BH5>Привет! Я могу научить тебя {item.hobby}! <br /> Я хочу научиться {item.wish}!
              <br />
              Number:{item.phone}
            </Media.Body>

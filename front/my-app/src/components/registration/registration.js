@@ -66,7 +66,7 @@ class Registration extends Component {
               onChange={this.passwordInState}
             />
           </div>
-          <button type="submit" class="btn btn-light">Отправить</button>
+          <button type="submit" className="btn btn-light">Отправить</button>
         </form>
       </div>
     );

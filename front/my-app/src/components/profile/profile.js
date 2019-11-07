@@ -14,7 +14,7 @@ class Profile extends Component {
   async componentDidMount() {
     await this.getProfile();
     console.log(this.props.user);
-    
+
     if (!this.props.user._id) {
       this.props.history.push('/');
     }
@@ -35,17 +35,18 @@ class Profile extends Component {
   searchInState = e => {
     this.setState({ search: e.target.value });
   };
+
   searchTeacher = async e => {
     e.preventDefault();
     const { search } = this.state;
-    console.log(search);
 
-    const respSearch = await fetch('/api/selection', {
+    const respSearch = await fetch('/api/searchTeacher', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({ searchBody: search }),
     });
     const searchTeachers = await respSearch.json();
     this.props.teachersInStoreFromSearch(searchTeachers);
@@ -74,18 +75,15 @@ class Profile extends Component {
       padding: '5%',
       'margin-top': '10%',
       'border-radius': '0.5rem',
-      background: '#fff'
-    }
+      background: '#fff',
+    };
     const userProfile = this.props.user;
     return (
-      <div className="container emp-profile" style = {styles}>
+      <div className="container emp-profile" style={styles}>
         <div className="row">
           <div className="col-md-4">
             <div className="profile-img">
-              <img
-                src="https://i.pinimg.com/736x/3f/68/41/3f6841442ce599874f3d247ae438736b.jpg"
-                alt=""
-              />
+              <img src="https://i.pinimg.com/736x/3f/68/41/3f6841442ce599874f3d247ae438736b.jpg" alt="" />
               <div className="file btn btn-lg btn-primary">
                 Изменить фото
                 <input type="file" name="file" />
@@ -108,13 +106,14 @@ class Profile extends Component {
                       <button
                         className="btn btn-outline-success my-2 my-sm-0"
                         onClick={e => this.searchTeacher(e)}
-                        type="submit">
+                        type="submit"
+                      >
                         Поиск
                       </button>
-                    <button className="btn btn-link" onClick={e => this.logout(e)}>
-                      Выйти
-                    </button>
-                    <Link to="/editprofile">Изменить</Link>
+                      <button className="btn btn-link" onClick={e => this.logout(e)}>
+                        Выйти
+                      </button>
+                      <Link to="/editprofile">Изменить</Link>
                     </form>
                   </nav>
                   <a
@@ -163,16 +162,14 @@ class Profile extends Component {
                     <label>Телефон</label>
                   </div>
                   <div className="col-md-6">
-                    <div className="col-md-6">{userProfile ? <p>{userProfile.phone}</p> :<></>}</div>
+                    <div className="col-md-6">{userProfile ? <p>{userProfile.phone}</p> : <></>}</div>
                   </div>
                 </div>
-              
               </div>
               <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
             </div>
           </div>
         </div>
-  
       </div>
     );
   }

@@ -18,7 +18,6 @@ const fileStoreOptions = {};
 app.use(
   session({
     store: new FileStore(fileStoreOptions),
-    // retries: 0,
     key: 'user_sid',
     secret: 'anything here',
     resave: false,
