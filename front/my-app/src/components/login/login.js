@@ -62,9 +62,7 @@ class Login extends Component {
               onChange={this.passwordInStateLogin}
             />
           </div>
-          <button type="submit" className="btn btn-primary mb-2">
-            Отправить
-          </button>
+          <button type="submit" class="btn btn-light">Отправить</button>
         </form>
       </div>
     );

@@ -2,6 +2,7 @@ import './registration.css';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { profileUserAC } from '../../redux/actions';
+import { ButtonToolbar,Button } from 'bootstrap-4-react';
 
 class Registration extends Component {
   constructor(props) {
@@ -63,7 +64,7 @@ class Registration extends Component {
               onChange={this.passwordInState}
             />
           </div>
-          <button>Отправить</button>
+          <button type="button" class="btn btn-light">Отправить</button>
         </form>
       </div>
     );

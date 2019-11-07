@@ -80,71 +80,41 @@ export default class EditProfile extends Component {
     return (
       <div className="container emp-profile" style={styles}>
         <form onSubmit={this.editProfile}>
-          <div className="row">
-            <div className="col-md-4">
-              <div className="profile-img">
-  
-                <div className="file btn btn-lg btn-primary">
-                   Добавить фото
-                                <input type="file" name="file" />
-                </div>
-              </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Почта</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите почту" onChange={this.emailInState}/>
+</div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Имя</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите имя" onChange={this.nameInState} />
+            
             </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Номер</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите номер" onChange={this.phoneInState} />
           </div>
-          <div className="row">
-            <div className="col-md-4">
-              <div className="profile-work">
-                <p>Я могу научить тебя</p>
-                <input type="text" className="profile-edit-btn" name="btnAddMore" placeholder="Edit work link" onChange={this.hobbyInState}/>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="profile-work">
-                <p>Я хочу научиться</p>
-                <input type="text" className="profile-edit-btn" name="btnAddMore" placeholder="Edit wishes" onChange={this.wishInState}/>
-              </div>
-            </div>
-            <div className="col-md-8">
-              <div className="tab-content profile-tab" id="myTabContent">
-                <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Имя</label>
-                      <input className="profile-edit-btn" name="btnAddMore" placeholder="                     Edit Name" onChange={this.nameInState}/>
-                    </div>
-                    <div className="col-md-6">
-                      <p></p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Почта</label>
-                      <input className="profile-edit-btn" name="btnAddMore" placeholder="                      Edit email" onChange={this.emailInState} />
-                    </div>
-                    <div className="col-md-6">
-                      <p></p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label>Номер</label>
-                      <input className="profile-edit-btn" name="btnAddMore" placeholder="                    Edit phone" onChange={this.phoneInState} />
-                    </div>
-                    <div className="col-md-6">
-                    </div>
-                  </div>
-                  <div className="row">
-                   
-                    <div className="col-md-6">
-                    </div>
-                  </div>
+    </div>
+              <div class="col-sm">
+              
+    </div>
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Навыки</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите навык" onChange={this.hobbyInState} />
+                  <small id="emailHelp" class="form-text text-muted">Навыки, которыми вы можете научить</small>
                 </div>
-                <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Навыки</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите навык" onChange={this.wishInState} />
+                  <small id="emailHelp" class="form-text text-muted">Навыки, которыми вы хотите научиться.</small>
                 </div>
-              </div>
+    </div>
             </div>
-          </div>
-          <button>Отправить</button>
+          </div>      
+          <button type="submit" class="btn btn-primary">Сохранить</button>
         </form>
       </div>
 
