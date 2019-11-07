@@ -18,7 +18,6 @@ router.post('/api/registration', async (req, res) => {
     await user.save();
     req.session.user = user;
     res.json(user);
-    console.log(user);
   } catch (error) {
     res.json(error);
   }
@@ -57,8 +56,6 @@ router.post('/api/selection/', async (req, res) => {
     const userFromProfile = await User.findById(id);
     const { wish } = userFromProfile;
     const users = await User.find({ hobby: wish });
-    console.log('прилетел в selection');
-    // console.log(users);
     await res.json(users);
   }
 });
