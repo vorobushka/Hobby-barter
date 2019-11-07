@@ -49,7 +49,8 @@ class Registration extends Component {
         height: '100vh',
         display: 'flex',
         'align-items': 'center',
-        'justify-content': 'center'
+        'justify-content': 'flex-start',
+        'margin': '0px 0px 0px 200px'
       }}>
         <div className="d-flex justify-content-center h-100">
           <div className="card">
