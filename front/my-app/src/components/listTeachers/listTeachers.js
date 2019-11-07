@@ -11,28 +11,29 @@ class listTeachers extends Component {
   }
 
     render() {
-      const list = this.props.tasks;
+      console.log(this.props.teachersFromSearch);
+      
+      if(this.props.teachersFromSearch) {
+      const list = this.props.teachersFromSearch;
+      
       const elements = list.map(item => {
         return (
           <li key={item._id} className="list-group-item">
             <div>
               <span className="todo-list-item-label">{item.name}</span>
-<span className="todo-list-item-label">{item.name}</span>
-<span className="todo-list-item-label">{item.name}</span>
-<span className="todo-list-item-label">{item.name}</span>
-              {/* <button type="button" className="btn btn-outline-success btn-sm float-right">
-                <i className="fa fa-exclamation" />
-              </button>
-              <button type="button" onClick={() => this.deleteTask(item._id)} className="btn btn-outline-danger btn-sm float-right">
-                <i className="fa fa-trash-o" />
-              </button> */}
+              <span className="todo-list-item-label">{item.hobby}</span>
+              <span className="todo-list-item-label">{item.wish}</span>
+              <span className="todo-list-item-label">{item.phone}</span>
             </div>
           </li>
         );
       });
       return <ul className="list-group todo-list">{elements}</ul>;
+    } else {
+      return <p>Ой ничё не найдено</p>;
     }
   }
+}
 
   function mapStateToProps(state) {
     return {
@@ -45,9 +46,9 @@ class listTeachers extends Component {
   //     fillState: data => dispatch(fillStateAC(data)),
   //     deleteTask: task => dispatch(deleteTaskAC(task)),
   //   };
-}
+// }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  null,
 )(listTeachers);

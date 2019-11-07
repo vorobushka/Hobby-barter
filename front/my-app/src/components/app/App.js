@@ -7,6 +7,7 @@ import Profile from '../profile';
 import EditProfile from '../editProfile';
 import FindTeachers from '../findTeachers/findTeachers';
 import StartPage from '../startpage/startpage';
+import ListTeachers from '../listTeachers/listTeachers'
 
 export default class App extends Component {
   render() {
@@ -20,6 +21,8 @@ export default class App extends Component {
           <Route path="/alert" component={Alert} />
           <Route path="/editprofile" component={EditProfile} />
           <Route path="/findTeachers" component={FindTeachers} />
+
+          <Route path="/testComponent" component={ListTeachers} />
         </Router>
         {/* <Login />
         <Registration /> */}

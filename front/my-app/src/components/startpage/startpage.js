@@ -75,6 +75,7 @@ class StartPage extends Component {
             </Collapse>
           </Navbar>
           <div className="row">
+            {/* <MyComponent teachers={this.props.teachersFromSearch} /> */}
             <div className="col">
               <img src="https://cache3.youla.io/files/images/360_360/5c/af/5caf5fb6e7d7ce4fad0f3833.jpg" />
             </div>
