@@ -5,7 +5,6 @@ const createError = require('http-errors');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
-const { cookiesCleaner } = require('./middleware/auth');
 
 mongoose.connect('mongodb://localhost:27017/skillBarter', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -29,8 +28,6 @@ app.use(
     },
   }),
 );
-
-app.use(cookiesCleaner);
 
 const indexRouter = require('./routes/index');
 

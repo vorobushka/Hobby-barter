@@ -13,7 +13,9 @@ class Profile extends Component {
   }
   async componentDidMount() {
     await this.getProfile();
-    if (!this.props.user) {
+    console.log(this.props.user);
+    
+    if (!this.props.user._id) {
       this.props.history.push('/login');
     }
   }

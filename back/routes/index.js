@@ -3,9 +3,8 @@ const bcrypt = require('bcrypt');
 
 const router = express.Router();
 const User = require('../models/user');
-const { sessionChecker, cookiesCleaner } = require('../middleware/auth');
 
-router.get('/', sessionChecker, (req, res) => {
+router.get('/', (req, res) => {
   res.send('тестирование');
 });
 
@@ -41,6 +40,9 @@ router.post('/api/login/', async (req, res) => {
 });
 
 router.post('/api/auto/', async (req, res) => {
+  if (!req.session.user) {
+    res.json({});
+  }
   const id = req.session.user._id;
   const userUpdate = await User.findById(id);
   req.session.user ? res.json(userUpdate) : res.json({ user: 0 });
@@ -105,6 +107,5 @@ router.post('/api/edit/', async (req, res) => {
   });
   await res.json(user);
 });
-
 
 module.exports = router;
