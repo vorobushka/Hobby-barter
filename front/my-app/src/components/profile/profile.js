@@ -16,7 +16,7 @@ class Profile extends Component {
     console.log(this.props.user);
     
     if (!this.props.user._id) {
-      this.props.history.push('/login');
+      this.props.history.push('/');
     }
   }
 
@@ -87,7 +87,7 @@ class Profile extends Component {
                 alt=""
               />
               <div className="file btn btn-lg btn-primary">
-                Change Photo
+                Изменить фото
                 <input type="file" name="file" />
               </div>
             </div>
@@ -103,20 +103,19 @@ class Profile extends Component {
                         type="text"
                         name="search"
                         onChange={this.searchInState}
-                        placeholder="Search"
+                        placeholder="Поиск учителя"
                       />
                       <button
                         className="btn btn-outline-success my-2 my-sm-0"
                         onClick={e => this.searchTeacher(e)}
-                        type="submit"
-                      >
-                        Search
+                        type="submit">
+                        Поиск
                       </button>
-                    </form>
                     <button className="btn btn-link" onClick={e => this.logout(e)}>
-                      Logout
+                      Выйти
                     </button>
-                    <Link to="/editprofile">Edit Profile </Link>
+                    <Link to="/editprofile">Изменить</Link>
+                    </form>
                   </nav>
                   <a
                     className="nav-link active"
@@ -127,7 +126,7 @@ class Profile extends Component {
                     aria-controls="home"
                     aria-selected="true"
                   >
-                    About
+                    Информация
                   </a>
                 </li>
                 <li className="nav-item"></li>
@@ -138,9 +137,9 @@ class Profile extends Component {
         <div className="row">
           <div className="col-md-4">
             <div className="profile-work">
-              <p> I CAN TEACH YOU: </p>
+              <p> Я МОГУ НАУЧИТЬ ТЕБЯ: </p>
               <div>{userProfile ? <p style={{ 'font-size': '20px' }}>{userProfile.hobby}</p> : <></>}</div>
-              <p>I WANT TO LEARN: </p>
+              <p>Я ХОЧУ НАУЧИТЬСЯ: </p>
               <div>{userProfile ? <p style={{ 'font-size': '20px' }}>{userProfile.wish}</p> : <></>}</div>
             </div>
           </div>
@@ -149,19 +148,19 @@ class Profile extends Component {
               <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div className="row">
                   <div className="col-md-6">
-                    <label>Name</label>
+                    <label>Имя</label>
                   </div>
                   <div className="col-md-6">{userProfile ? <p>{userProfile.name}</p> : <></>}</div>
                 </div>
                 <div className="row">
                   <div className="col-md-6">
-                    <label>Email</label>
+                    <label>Почта</label>
                   </div>
                   <div className="col-md-6">{userProfile ? <p>{userProfile.email}</p> : <></>}</div>
                 </div>
                 <div className="row">
                   <div className="col-md-6">
-                    <label>Phone</label>
+                    <label>Телефон</label>
                   </div>
                   <div className="col-md-6">
                     <div className="col-md-6">{userProfile ? <p>{userProfile.phone}</p> :<></>}</div>

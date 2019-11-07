@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { teachersInStateAC, teachersFullMatchAC } from '../../redux/actions';
 import './findTeachers.css';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import { ListGroup, ListGroupItem } from 'reactstrap';
-import { Alert } from 'bootstrap-4-react';
 import { Media, BImg, BH5 } from 'bootstrap-4-react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Button, Dropdown, Form, Collapse } from 'bootstrap-4-react';
@@ -70,14 +65,14 @@ class FindTeachers extends Component {
     console.log(this.props.teachersFull);
     const elTeachersFull = full.map(item => {
       return (
-        <div style={{ backgroundColor: 'white', width: '300px' }}>
+        <div style={{ backgroundColor: 'white', width: '300px'}}>
           <Media border="success" p="3" mb="3">
             <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
             <Media.Body>
-              <p>SkillBarter</p>
+              
               <BH5 mt="0">{item.name}</BH5>
-              Hi, I would like to learn {item.wish}! I can teach You {item.hobby}!<br /> 
-              Number:{item.phone}
+              Привет! Я могу научить тебя {item.wish}! Я хочу научиться {item.hobby}!<br /> 
+              Номер:{item.phone}
             </Media.Body>
           </Media>
         </div>
@@ -91,8 +86,8 @@ class FindTeachers extends Component {
           <Media border="info" p="3" mb="3">
             <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
             <Media.Body>
-              <BH5 mt="0">{item.name}</BH5>I can teach You {item.hobby}! <br /> Hi, I would like to learn {item.wish}!<br /> 
-            Number:{item.phone}
+              <BH5 mt="0">{item.name}</BH5>Привет! Я могу научить тебя {item.hobby}! <br /> Я хочу научиться {item.wish}!<br /> 
+            Номер:{item.phone}
             </Media.Body>
           </Media>
         </div>
@@ -118,7 +113,6 @@ class FindTeachers extends Component {
 
     return (
       <div>
-        
         <Navbar expand="lg" light bg="light">
           <Navbar.Brand href="#"></Navbar.Brand>
           <Navbar.Toggler target="#navbarSupportedContent" />
@@ -126,17 +120,17 @@ class FindTeachers extends Component {
             <Navbar.Nav mr="auto">
               <Nav.Item active>
                 <Nav.Link>
-                  <Link to="/profile">Profile</Link>
-                  </Nav.Link>
+                  <Link to="/profile">Профиль</Link>
+                </Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link>
-                  <Link to="/login">Login</Link>
+                  <Link to="/login">Логин</Link>
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item dropdown>
                 <Nav.Link>
-                  <Link to="/registration">Registration</Link>
+                  <Link to="/registration">Регистрация</Link>
                 </Nav.Link>
                 <Dropdown.Menu>
                   <Dropdown.Item>Action</Dropdown.Item>
@@ -147,10 +141,10 @@ class FindTeachers extends Component {
               </Nav.Item>
             </Navbar.Nav>
             <Form onSubmit={this.searchTeacher} inline my="2 lg-0">
-              <Form.Input type="search" onChange={this.searchInState} placeholder="Search" mr="sm-2" />
+              <Form.Input type="search" onChange={this.searchInState} placeholder="Поиск учителя" mr="sm-2" />
               <Button outline success my="2 sm-0">
-                Search
-                </Button>
+                Поиск
+              </Button>
             </Form>
           </Collapse>
         </Navbar>
