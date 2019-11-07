@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { profileUserAC, teachersInStoreFromSearchAC } from '../../redux/actions';
+import { Navbar, Nav, Button, Dropdown, Form, Collapse, FormControl } from 'bootstrap-4-react';
 
 class Profile extends Component {
   constructor(props) {
@@ -80,7 +81,20 @@ class Profile extends Component {
     const userProfile = this.props.user;
     return (
       <div>
-        <nav class="navbar navbar-light bg-light">
+
+
+        <Navbar bg="dark" variant="dark">
+          <Nav className="mr-auto">
+            <Nav><div className="logo">СкиллБартер</div></Nav>
+          </Nav>
+          <Form onSubmit={this.searchTeacher} inline my="2 lg-0">
+            <Form.Input type="search" onChange={this.searchInState} placeholder="Поиск" mr="sm-2" />
+            <Button outline success my="2 sm-0">
+              Поиск учителя
+                </Button>
+          </Form>
+        </Navbar>
+        {/* <nav class="navbar navbar-light bg-light">
                   <form className="form-inline">
                       <input
                         className="form-control mr-sm-2"
@@ -98,7 +112,7 @@ class Profile extends Component {
                       </button>
                 
                     </form>
-                  </nav>
+                  </nav> */}
 
       <div class="resume">
 			
@@ -156,7 +170,7 @@ class Profile extends Component {
 				<div class="social">
               <button className="btn btn-link" onClick={e => this.logout(e)}>
                 Выйти
-                      </button>
+               </button>
               
 				</div>
 			</div>
