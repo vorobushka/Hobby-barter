@@ -32,11 +32,11 @@ class Login extends Component {
     });
     const user = await response.json();
     console.log(user);
-    if (user) {
+    if (user._id) {
       this.props.profileUser(user);
       this.props.history.push('/alert');
     } else {
-      this.props.history.push('/login');
+      this.props.history.push('/');
     }
   };
 
@@ -62,7 +62,7 @@ class Login extends Component {
               onChange={this.passwordInStateLogin}
             />
           </div>
-          <button type="submit" class="btn btn-light">Отправить</button>
+          <button type="submit" className="btn btn-light">Отправить</button>
         </form>
       </div>
     );

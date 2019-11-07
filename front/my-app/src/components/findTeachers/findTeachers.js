@@ -36,10 +36,12 @@ class FindTeachers extends Component {
       },
     });
     const arrTeachers = await respTeachers.json();
-    // console.log(arrTeachers);
+    console.log(arrTeachers);
 
     this.props.teachersFullMatch(arrTeachers);
   };
+
+  
   //   allTasks = async () => {
   //     const resp = await fetch('/api/');
   //     const data = await resp.json();
@@ -95,7 +97,6 @@ class FindTeachers extends Component {
     });
 
    const teachersT = this.props.teachersFromSearch;
-   
    const elTeachersFromSearch = teachersT.map(item => {
      return (
        <div style={{ backgroundColor: 'white', width: '300px' }}>

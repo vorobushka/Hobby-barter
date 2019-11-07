@@ -42,7 +42,7 @@ router.post('/api/login/', async (req, res) => {
 
 router.post('/api/auto/', async (req, res) => {
   if (!req.session.user) {
-    res.json({});
+    res.json([]);
   }
   const id = req.session.user._id;
   const userUpdate = await User.findById(id);
@@ -51,7 +51,7 @@ router.post('/api/auto/', async (req, res) => {
 
 router.post('/api/selection/', async (req, res) => {
   if (!req.session.user) {
-    res.json({});
+    res.json([]);
   }
   const id = req.session.user._id;
   const userFromProfile = await User.findById(id);
@@ -64,20 +64,18 @@ router.post('/api/selection/', async (req, res) => {
 
 router.post('/api/fullmatch/', async (req, res) => {
   if (!req.session.user) {
-    res.json({});
+    res.json([]);
   }
   const id = req.session.user._id;
   const userFromProfile = await User.findById(id);
   const wishProfile = userFromProfile.wish;
   const hobbyProfile = userFromProfile.hobby;
   const teachersFullMatch = await User.find({ hobby: wishProfile, wish: hobbyProfile });
-  // console.log(teachersFullMatch);
   await res.json(teachersFullMatch);
 });
 
 router.post('/api/searchTeacher', async (req, res) => {
   const searchTeachers = await User.find({ hobby: req.body.searchBody });
-  console.log(searchTeachers);
   await res.json(searchTeachers);
 });
 
