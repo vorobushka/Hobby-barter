@@ -16,7 +16,7 @@
     "reactstrap": "^8.1.1",
     "redux": "^4.0.4"
   },
-  "proxy": "http://136.244.71.48:3100/",
+  "proxy": "http://localhost:3100/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
