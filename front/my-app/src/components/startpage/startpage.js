@@ -17,6 +17,7 @@ class StartPage extends Component {
   searchInState = e => {
     this.setState({ search: e.target.value });
   };
+  
   searchTeacher = async e => {
     e.preventDefault();
     const { search } = this.state;

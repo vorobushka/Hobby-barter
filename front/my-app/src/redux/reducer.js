@@ -4,6 +4,7 @@ const initialState = {
   user: '',
   teachers: [],
   teachersFull: [],
+  teachersFromSearch: [],
 };
 
 export default function(state = initialState, action) {
