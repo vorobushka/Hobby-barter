@@ -101,7 +101,7 @@ class StartPage extends Component {
                   'font-family': 'Raleway',
                   'font-weight': 'bold',
                   'font-size': '22px',
-                  'color': 'rgb(230, 224, 240)'
+                  'color': '#222'
                           }}
                         >
                           Мечтаешь научиться программировать или выучить английский, стать гуру фотошопа или же монтировать крутые
