@@ -64,13 +64,10 @@ export default class EditProfile extends Component {
   };
 
   render() {
-    // const styles = {
-    //   height: '80vh',
-    //   padding: '5%',
-    //   'margin-top': '10%',
-    //   'border-radius': '0.5rem',
-    //   background: '#fff',
-    // };
+     const styles = {
+      'text-align': 'left',
+    'font-size': '20px'
+     };
     return (
 
       <form onSubmit={this.editProfile}>
@@ -84,7 +81,7 @@ export default class EditProfile extends Component {
             </div>
 
             <div class="name">
-              <h3>Изменить профиль</h3>
+                <h3>Изменить профиль</h3>
               
             </div>
             <div class="clearfix"></div>
@@ -93,7 +90,7 @@ export default class EditProfile extends Component {
           <div class="r-detail">
             <table>
               <tr>
-                <th>Имя</th>
+                <th style = {styles}>Имя</th>
                   <input
                 type="text"
                 class="form-control"
@@ -104,7 +101,7 @@ export default class EditProfile extends Component {
                />
               </tr>
               <tr>
-                <th>Пол</th>
+                  <th style={styles}>Пол</th>
                   <input
                     type="text"
                     class="form-control"
@@ -115,7 +112,7 @@ export default class EditProfile extends Component {
                   />
               </tr>
               <tr>
-                <th>Возраст</th>
+                  <th style={styles}>Возраст</th>
                   <input
                     type="text"
                     class="form-control"
@@ -126,7 +123,7 @@ export default class EditProfile extends Component {
                   />
               </tr>
               <tr>
-                <th>Mогу научить</th>
+                  <th style={styles}>Mогу научить</th>
                 
                   <input
                  type="text"
@@ -138,7 +135,7 @@ export default class EditProfile extends Component {
             />
               </tr>
               <tr>
-                <th>Xочу научиться</th>
+                  <th style={styles}>Xочу научиться</th>
                   <input
                  type="text"
                  class="form-control"
@@ -149,7 +146,7 @@ export default class EditProfile extends Component {
                />
               </tr>
               <tr>
-                <th>Телефон</th>
+                  <th style={styles}>Телефон</th>
                   <input
                  type="text"
                class="form-control"
@@ -160,7 +157,7 @@ export default class EditProfile extends Component {
               />
               </tr>
               <tr>
-                <th>Почта</th>
+                  <th style={styles}>Почта</th>
                   <input
                 type="text"
                  class="form-control"
@@ -171,7 +168,7 @@ export default class EditProfile extends Component {
               />
               </tr>
               <tr>
-                <th>Город</th>
+                  <th style={styles}>Город</th>
                   <input
                     type="text"
                     class="form-control"

@@ -71,13 +71,10 @@ class Profile extends Component {
   };
 
   render() {
-    // const styles = {
-    //   height: '80vh',
-    //   padding: '5%',
-    //   'margin-top': '10%',
-    //   'border-radius': '0.5rem',
-    //   background: '#fff',
-    // };
+    const styles = {
+      'text-align': 'left',
+      'font-size': '20px'
+    };
     const userProfile = this.props.user;
     console.log(userProfile)
     return (
@@ -114,35 +111,35 @@ class Profile extends Component {
 				<div class="r-detail">
 					<table>	
 						<tr>
-							<th>Имя</th>
+							<th style= {styles}>Имя</th>
                   <td>{userProfile ? <p>{userProfile.name}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Пол</th>
+                  <th style={styles}>Пол</th>
                   <td>{userProfile ? <p>{userProfile.sex}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Возраст</th>
+                  <th style={styles}>Возраст</th>
                   <td>{userProfile ? <p>{userProfile.age}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Mогу научить</th>
+                  <th style={styles}>Mогу научить</th>
                   <td>{userProfile ? <p>{userProfile.hobby}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Xочу научиться</th>
+                  <th style={styles}>Xочу научиться</th>
                   <td>{userProfile ? <p>{userProfile.wish}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Телефон</th>
+                  <th style={styles}>Телефон</th>
                   <td>{userProfile ? <p>{userProfile.phone}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Почта</th>
+                  <th style={styles}>Почта</th>
                   <td>{userProfile ? <p>{userProfile.email}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Город</th>
+                  <th style={styles}>Город</th>
                   <td>{userProfile ? <p>{userProfile.city}</p> : <></>}</td>
 						</tr>
 					</table>
