@@ -70,7 +70,7 @@ router.post('/api/fullmatch/', async (req, res) => {
     const userFromProfile = await User.findById(id);
     const wishProfile = userFromProfile.wish;
     const hobbyProfile = userFromProfile.hobby;
-    if (wishProfile !== null) {
+    if (wishProfile !== null && hobbyProfile !== null) {
       const teachersFullMatch = await User.find({ hobby: wishProfile, wish: hobbyProfile });
       await res.json(teachersFullMatch);
     }
