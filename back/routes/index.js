@@ -99,7 +99,9 @@ router.get('/api/logout', async (req, res, next) => {
 });
 
 router.post('/api/edit/', async (req, res) => {
-  const { name, email, hobby, wish, phone } = req.body.user;
+  console.log(req.body.user);
+  
+  const { name, email, hobby, wish, phone, age, city, sex } = req.body.user;
   const id = req.session.user._id;
 
   const user = await User.findByIdAndUpdate(id, {
@@ -109,6 +111,9 @@ router.post('/api/edit/', async (req, res) => {
       hobby,
       wish,
       phone,
+      age,
+      city,
+      sex,
     },
   });
   await res.json(user);
