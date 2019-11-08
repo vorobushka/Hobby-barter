@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { profileUserAC } from '../../redux/actions';
 import { Link } from 'react-router-dom';
+import { Navbar, Nav, Form, Button } from 'bootstrap-4-react';
 
 class Login extends Component {
   constructor(props) {
@@ -43,8 +44,26 @@ class Login extends Component {
 
   render() {
     return (
-
-
+<div>
+        <Navbar bg="dark" variant="dark">
+          <Nav className="mr-auto">
+            <Nav><div className="logo">СкиллБартер</div></Nav>
+             
+            <Nav.Link >
+              <Link to="/login">Логин</Link>
+            </Nav.Link>
+         
+            <Nav.Link>
+              <Link to="/registration">Регистрация</Link>
+            </Nav.Link>
+          </Nav>
+          <Form onSubmit={this.searchTeacher} inline my="2 lg-0">
+            <Form.Input type="search" onChange={this.searchInState} placeholder="Поиск" mr="sm-2" />
+            <Button outline success my="2 sm-0">
+              Поиск учителя
+                </Button>
+          </Form>
+        </Navbar>
       <div className="container div-form" style={{
         width: '100%',
         height: '100vh',
@@ -97,7 +116,7 @@ class Login extends Component {
                 </div>
 </div>
 
-
+</div>
 
 
 
