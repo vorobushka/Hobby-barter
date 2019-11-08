@@ -1,6 +1,5 @@
 const express = require('express');
 
-
 const router = express.Router();
 const User = require('../models/user');
 
@@ -75,8 +74,10 @@ router.post('/api/fullmatch/', async (req, res) => {
 });
 
 router.post('/api/searchTeacher', async (req, res) => {
-  const searchTeachers = await User.find({ hobby: req.body.searchBody });
-  await res.json(searchTeachers);
+  if (req.body.searchBody !== null) {
+    const searchTeachers = await User.find({ hobby: req.body.searchBody });
+    await res.json(searchTeachers);
+  } else res.json([]);
 });
 
 router.get('/api/logout', async (req, res, next) => {

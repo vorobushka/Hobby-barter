@@ -12,6 +12,7 @@ class FindTeachers extends Component {
     super(props);
     this.state = {
       search: null,
+      status: true,
     };
   }
   componentDidMount = async () => {
@@ -19,9 +20,12 @@ class FindTeachers extends Component {
     await this.findTeachersWish();
     const { teachers, teachersFull, teachersFromSearch } = this.props;
     if (teachers.length === 0 && teachersFull.length === 0 && teachersFromSearch.length === 0) {
-      this.props.history.push('/profile');
+      this.setState({ status: false });
+    } else {
+      // this.setState({ status: true });
     }
   };
+
   searchInState = e => {
     this.setState({ search: e.target.value });
   };
@@ -48,7 +52,6 @@ class FindTeachers extends Component {
     });
     const arrTeachers = await respTeachers.json();
     console.log(arrTeachers);
-
     this.props.teachersFullMatch(arrTeachers);
   };
 
@@ -56,7 +59,7 @@ class FindTeachers extends Component {
     e.preventDefault();
     const { search } = this.state;
     console.log(search);
-
+    // debugger;
     const respSearch = await fetch('/api/searchTeacher', {
       method: 'POST',
       headers: {
@@ -68,58 +71,97 @@ class FindTeachers extends Component {
     const searchTeachers = await respSearch.json();
     this.props.teachersInStoreFromSearch(searchTeachers);
     this.props.history.push('/findTeachers');
+    // this.state.status = true;
+    if (searchTeachers.length === 0) {
+      this.setState({ status: false });
+    } else {
+      this.setState({ status: true });
+    }
   };
 
   render() {
-    const full = this.props.teachersFull;
-    console.log(this.props.teachersFull);
-    const elTeachersFull = full.map(item => {
-      return (
+    let message;
+    if (this.state.status === false) {
+      message = (
         <div style={{ backgroundColor: 'white', width: '300px' }}>
           <Media border="success" p="3" mb="3">
             <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
             <Media.Body>
-              <BH5 mt="0">{item.name}</BH5>
-              Привет! Я могу научить тебя {item.wish}! Я хочу научиться {item.hobby}!<br />
-              Номер:{item.phone}
+              <BH5 mt="0"></BH5>К сожалению, учителей по вашему запросу не найдено. Повторите поиск
             </Media.Body>
           </Media>
         </div>
       );
-    });
+    }
 
-    const teachers = this.props.teachers;
-    const elTeachers = teachers.map(item => {
-      return (
-        <div style={{ backgroundColor: 'white', width: '300px' }}>
-          <Media border="info" p="3" mb="3">
-            <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
-            <Media.Body>
-              <BH5 mt="0">{item.name}</BH5>Привет! Я могу научить тебя {item.hobby}! <br /> Я хочу научиться {item.wish}
-              !<br />
-              Номер:{item.phone}
-            </Media.Body>
-          </Media>
-        </div>
-      );
-    });
+    let elTeachersFull = [];
+    if (this.props.teachersFull.length) {
+      const full = this.props.teachersFull;
+      console.log(this.props.teachersFull);
+      elTeachersFull = full.map(item => {
+        return (
+          <div style={{ backgroundColor: 'white', width: '300px' }}>
+            <Media border="success" p="3" mb="3">
+              <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
+              <Media.Body>
+                <BH5 mt="0">{item.name}</BH5>
+                Привет! Я могу научить тебя {item.hobby}! Я хочу научиться {item.wish}!<br />
+                Номер:{item.phone}
+              </Media.Body>
+            </Media>
+          </div>
+        );
+      });
+    } else {
+      elTeachersFull = '';
+    }
 
-    const teachersT = this.props.teachersFromSearch;
-    const elTeachersFromSearch = teachersT.map(item => {
-      return (
-        <div style={{ backgroundColor: 'white', width: '300px' }}>
-          <Media border="info" p="3" mb="3">
-            <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
-            <Media.Body>
-              <BH5 mt="0">{item.name}</BH5>Привет! Я могу научить тебя {item.hobby}! <br /> Я хочу научиться {item.wish}
-              !
-              <br />
-              {this.props.user ? <p>Номер: {item.phone}</p> : <b>Зарегистрируйтесь, чтобы увидеть телефон</b>}
-            </Media.Body>
-          </Media>
-        </div>
-      );
-    });
+    let elTeachers = [];
+    if (this.props.teachers.length) {
+      const teachers = this.props.teachers;
+      elTeachers = teachers.map(item => {
+        return (
+          <div style={{ backgroundColor: 'white', width: '300px' }}>
+            <Media border="info" p="3" mb="3">
+              <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
+              <Media.Body>
+                <BH5 mt="0">{item.name}</BH5>Привет! Я могу научить тебя {item.hobby}! <br /> Я хочу научиться{' '}
+                {item.wish}
+                !<br />
+                Номер:{item.phone}
+              </Media.Body>
+            </Media>
+          </div>
+        );
+      });
+    } else {
+      elTeachers = '';
+    }
+
+    let elTeachersFromSearch = [];
+    console.log(this.props.user);
+
+    if (this.props.teachersFromSearch.length) {
+      const teachersT = this.props.teachersFromSearch;
+      elTeachersFromSearch = teachersT.map(item => {
+        return (
+          <div style={{ backgroundColor: 'white', width: '300px' }}>
+            <Media border="info" p="3" mb="3">
+              <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
+              <Media.Body>
+                <BH5 mt="0">{item.name}</BH5>Привет! Я могу научить тебя {item.hobby}! <br /> Я хочу научиться{' '}
+                {item.wish}
+                !
+                <br />
+                {this.props.user.name ? <p>Номер: {item.phone}</p> : <b>Зарегистрируйтесь, чтобы увидеть телефон</b>}
+              </Media.Body>
+            </Media>
+          </div>
+        );
+      });
+    } else {
+      elTeachersFromSearch = '';
+    }
 
     return (
       <div>
@@ -158,6 +200,7 @@ class FindTeachers extends Component {
             </Form>
           </Collapse>
         </Navbar>
+        <div>{message}</div>
         <div>{elTeachersFromSearch}</div>
         <div>{elTeachersFull}</div>
         <div>{elTeachers}</div>
@@ -171,6 +214,7 @@ function mapStateToProps(state) {
     teachers: state.teachers,
     teachersFull: state.teachersFull,
     teachersFromSearch: state.teachersFromSearch,
+    user: state.user,
   };
 }
 
