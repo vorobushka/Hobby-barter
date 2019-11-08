@@ -84,7 +84,7 @@ class FindTeachers extends Component {
               <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
               <Media.Body>
                 <BH5 mt="0">{item.name}</BH5>
-                Привет! Я могу научить тебя {item.wish}! Я хочу научиться {item.hobby}!<br />
+                Привет! Я могу научить тебя {item.hobby}! Я хочу научиться {item.wish}!<br />
                 Номер:{item.phone}
               </Media.Body>
             </Media>
