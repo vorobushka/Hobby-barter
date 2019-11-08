@@ -48,7 +48,6 @@ class FindTeachers extends Component {
     });
     const arrTeachers = await respTeachers.json();
     console.log(arrTeachers);
-
     this.props.teachersFullMatch(arrTeachers);
   };
 
