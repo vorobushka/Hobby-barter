@@ -80,6 +80,12 @@ class FindTeachers extends Component {
   };
 
   render() {
+
+    const styles = {
+      'text-align': 'left',
+      'font-size': '20px'
+    };
+
     let message;
     if (this.state.status === false) {
       message = (
