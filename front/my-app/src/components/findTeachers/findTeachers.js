@@ -71,55 +71,76 @@ class FindTeachers extends Component {
   };
 
   render() {
-    const full = this.props.teachersFull;
-    console.log(this.props.teachersFull);
-    const elTeachersFull = full.map(item => {
-      return (
-        <div style={{ backgroundColor: 'white', width: '300px' }}>
-          <Media border="success" p="3" mb="3">
-            <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
-            <Media.Body>
-              <BH5 mt="0">{item.name}</BH5>
-              Привет! Я могу научить тебя {item.wish}! Я хочу научиться {item.hobby}!<br />
-              Номер:{item.phone}
-            </Media.Body>
-          </Media>
-        </div>
-      );
-    });
+    let elTeachersFull = [];
+    console.log(this.props);
+    
+    if (this.props.teachersFull.length) {
+      const full = this.props.teachersFull;
+      console.log(this.props.teachersFull);
+      elTeachersFull = full.map(item => {
+        return (
+          <div style={{ backgroundColor: 'white', width: '300px' }}>
+            <Media border="success" p="3" mb="3">
+              <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
+              <Media.Body>
+                <BH5 mt="0">{item.name}</BH5>
+                Привет! Я могу научить тебя {item.wish}! Я хочу научиться {item.hobby}!<br />
+                Номер:{item.phone}
+              </Media.Body>
+            </Media>
+          </div>
+        );
+      });
+    } else {
+      elTeachersFull = '';
+    }
 
-    const teachers = this.props.teachers;
-    const elTeachers = teachers.map(item => {
-      return (
-        <div style={{ backgroundColor: 'white', width: '300px' }}>
-          <Media border="info" p="3" mb="3">
-            <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
-            <Media.Body>
-              <BH5 mt="0">{item.name}</BH5>Привет! Я могу научить тебя {item.hobby}! <br /> Я хочу научиться {item.wish}
-              !<br />
-              Номер:{item.phone}
-            </Media.Body>
-          </Media>
-        </div>
-      );
-    });
+    let elTeachers = [];
+    if (this.props.teachers.length) {
+      const teachers = this.props.teachers;
+      elTeachers = teachers.map(item => {
+        return (
+          <div style={{ backgroundColor: 'white', width: '300px' }}>
+            <Media border="info" p="3" mb="3">
+              <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
+              <Media.Body>
+                <BH5 mt="0">{item.name}</BH5>Привет! Я могу научить тебя {item.hobby}! <br /> Я хочу научиться{' '}
+                {item.wish}
+                !<br />
+                Номер:{item.phone}
+              </Media.Body>
+            </Media>
+          </div>
+        );
+      });
+    } else {
+      elTeachers = '';
+    }
 
-    const teachersT = this.props.teachersFromSearch;
-    const elTeachersFromSearch = teachersT.map(item => {
-      return (
-        <div style={{ backgroundColor: 'white', width: '300px' }}>
-          <Media border="info" p="3" mb="3">
-            <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
-            <Media.Body>
-              <BH5 mt="0">{item.name}</BH5>Привет! Я могу научить тебя {item.hobby}! <br /> Я хочу научиться {item.wish}
-              !
-              <br />
-              {this.props.user ? <p>Номер: {item.phone}</p> : <b>Зарегистрируйтесь, чтобы увидеть телефон</b>}
-            </Media.Body>
-          </Media>
-        </div>
-      );
-    });
+    let elTeachersFromSearch = [];
+    console.log(this.props.user);
+    
+    if (this.props.teachersFromSearch.length) {
+      const teachersT = this.props.teachersFromSearch;
+      elTeachersFromSearch = teachersT.map(item => {
+        return (
+          <div style={{ backgroundColor: 'white', width: '300px' }}>
+            <Media border="info" p="3" mb="3">
+              <BImg src="https://static.npmjs.com/images/avatars/Avatar1.svg" alignSelf="start" mr="3" />
+              <Media.Body>
+                <BH5 mt="0">{item.name}</BH5>Привет! Я могу научить тебя {item.hobby}! <br /> Я хочу научиться{' '}
+                {item.wish}
+                !
+                <br />
+                {this.props.user ? <p>Номер: {item.phone}</p> : <b>Зарегистрируйтесь, чтобы увидеть телефон</b>}
+              </Media.Body>
+            </Media>
+          </div>
+        );
+      });
+    } else {
+      elTeachersFromSearch = '';
+    }
 
     return (
       <div>
@@ -171,6 +192,7 @@ function mapStateToProps(state) {
     teachers: state.teachers,
     teachersFull: state.teachersFull,
     teachersFromSearch: state.teachersFromSearch,
+    user: state.user,
   };
 }
 
