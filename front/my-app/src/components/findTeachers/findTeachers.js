@@ -132,7 +132,7 @@ class FindTeachers extends Component {
                 {item.wish}
                 !
                 <br />
-                {this.props.user ? <p>Номер: {item.phone}</p> : <b>Зарегистрируйтесь, чтобы увидеть телефон</b>}
+                {this.props.user._id ? <p>Номер: {item.phone}</p> : <b>Зарегистрируйтесь, чтобы увидеть телефон</b>}
               </Media.Body>
             </Media>
           </div>
