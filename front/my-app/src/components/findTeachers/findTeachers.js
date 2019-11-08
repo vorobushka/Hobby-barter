@@ -139,7 +139,7 @@ class FindTeachers extends Component {
     }
 
     let elTeachersFromSearch = [];
-    console.log(this.props.user);
+    console.log(this.props.user._id);
 
     if (this.props.teachersFromSearch.length) {
       const teachersT = this.props.teachersFromSearch;
@@ -153,7 +153,7 @@ class FindTeachers extends Component {
                 {item.wish}
                 !
                 <br />
-                {this.props.user.name ? <p>Номер: {item.phone}</p> : <b>Зарегистрируйтесь, чтобы увидеть телефон</b>}
+                {this.props.user._id ? <p>Номер: {item.phone}</p> : <b>Зарегистрируйтесь, чтобы увидеть телефон</b>}
               </Media.Body>
             </Media>
           </div>

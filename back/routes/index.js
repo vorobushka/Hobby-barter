@@ -55,8 +55,10 @@ router.post('/api/selection/', async (req, res) => {
     const id = req.session.user._id;
     const userFromProfile = await User.findById(id);
     const { wish } = userFromProfile;
-    const users = await User.find({ hobby: wish });
-    await res.json(users);
+    if (wish !== null) {
+      const users = await User.find({ hobby: wish });
+      await res.json(users);
+    }
   }
 });
 
@@ -68,8 +70,10 @@ router.post('/api/fullmatch/', async (req, res) => {
     const userFromProfile = await User.findById(id);
     const wishProfile = userFromProfile.wish;
     const hobbyProfile = userFromProfile.hobby;
-    const teachersFullMatch = await User.find({ hobby: wishProfile, wish: hobbyProfile });
-    await res.json(teachersFullMatch);
+    if (wishProfile !== null) {
+      const teachersFullMatch = await User.find({ hobby: wishProfile, wish: hobbyProfile });
+      await res.json(teachersFullMatch);
+    }
   }
 });
 
@@ -95,9 +99,7 @@ router.get('/api/logout', async (req, res, next) => {
 });
 
 router.post('/api/edit/', async (req, res) => {
-  const {
- name, email, hobby, wish, phone, city, age, sex,
-} = req.body.user;
+  const { name, email, hobby, wish, phone } = req.body.user;
   const id = req.session.user._id;
 
   const user = await User.findByIdAndUpdate(id, {
@@ -107,10 +109,6 @@ router.post('/api/edit/', async (req, res) => {
       hobby,
       wish,
       phone,
-      city,
-      age,
-      sex,
-
     },
   });
   await res.json(user);
