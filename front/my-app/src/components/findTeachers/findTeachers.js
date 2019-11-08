@@ -106,7 +106,7 @@ class FindTeachers extends Component {
               <Media.Body>
                 <BH5 mt="0">{item.name}</BH5>
                 Привет! Я могу научить тебя {item.hobby}! Я хочу научиться {item.wish}!<br />
-                Номер:{item.phone}
+                <h6>Номер:{item.phone}</h6>
               </Media.Body>
             </Media>
           </div>
@@ -128,7 +128,7 @@ class FindTeachers extends Component {
                 <BH5 mt="0">{item.name}</BH5>Привет! Я могу научить тебя {item.hobby}! <br /> Я хочу научиться{' '}
                 {item.wish}
                 !<br />
-                Номер:{item.phone}
+                <h6>Номер:{item.phone}</h6>
               </Media.Body>
             </Media>
           </div>
@@ -153,7 +153,7 @@ class FindTeachers extends Component {
                 {item.wish}
                 !
                 <br />
-                {this.props.user._id ? <p>Номер: {item.phone}</p> : <b>Зарегистрируйтесь, чтобы увидеть телефон</b>}
+                {this.props.user._id ? <h6>Номер: {item.phone}</h6> : <b>Зарегистрируйтесь, чтобы увидеть телефон</b>}
               </Media.Body>
             </Media>
           </div>
