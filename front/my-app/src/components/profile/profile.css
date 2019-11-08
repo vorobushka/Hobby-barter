@@ -1,5 +1,4 @@
 
-
 body{
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 }
@@ -13,19 +12,25 @@ table {
     border-collapse: separate;
     border-spacing: 2px;
     border-color: grey;
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Kurale', serif;
+    font-size: 20px;
 }
 .bb {
 	color: #666666;
-	font-size: 13px;
+	font-size: 18px;
 	line-height: 23px;
 	font-family: 'Open Sans', sans-serif;
 	-webkit-font-smoothing: antialiased;
 }
 
-
+p {
+   font-size: 18px; 
+}
 
 th {
     text-align: left;
+    font-size: 18px;
 }
 
 th {
@@ -234,7 +239,7 @@ hr {
 .resume .r-sidebar table tr td{
 	padding-left:25px;
 	font-size:13px;
-	color:#999;
+	color: #222;
 }
 .resume .r-sidebar .social{
 	text-align:center;

@@ -96,7 +96,7 @@ router.get('/api/logout', async (req, res, next) => {
 
 router.post('/api/edit/', async (req, res) => {
   const {
- name, email, hobby, wish, phone 
+ name, email, hobby, wish, phone, city, age, sex,
 } = req.body.user;
   const id = req.session.user._id;
 
@@ -107,6 +107,10 @@ router.post('/api/edit/', async (req, res) => {
       hobby,
       wish,
       phone,
+      city,
+      age,
+      sex,
+
     },
   });
   await res.json(user);

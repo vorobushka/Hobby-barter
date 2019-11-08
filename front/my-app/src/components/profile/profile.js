@@ -72,13 +72,11 @@ class Profile extends Component {
 
   render() {
     const styles = {
-      height: '80vh',
-      padding: '5%',
-      'margin-top': '10%',
-      'border-radius': '0.5rem',
-      background: '#fff',
+      'text-align': 'left',
+      'font-size': '20px'
     };
     const userProfile = this.props.user;
+    console.log(userProfile)
     return (
       <div>
 
@@ -94,37 +92,17 @@ class Profile extends Component {
                 </Button>
           </Form>
         </Navbar>
-        {/* <nav class="navbar navbar-light bg-light">
-                  <form className="form-inline">
-                      <input
-                        className="form-control mr-sm-2"
-                        type="text"
-                        name="search"
-                        onChange={this.searchInState}
-                        placeholder="Поиск учителя"
-                      />
-                      <button
-                        className="btn btn-outline-success my-2 my-sm-0"
-                        onClick={e => this.searchTeacher(e)}
-                        type="submit"
-                      >
-                        Поиск
-                      </button>
-                
-                    </form>
-                  </nav> */}
-
       <div class="resume">
 			
 			<div class="r-sidebar">
 				<div class="r-sidebar-item">
 					
 					<div class="img">
-              <a href="ui-304.html#"><img src="https://i.pinimg.com/736x/3f/68/41/3f6841442ce599874f3d247ae438736b.jpg" alt="" class="img-responsive" /></a>
+              <a><img src="https://i.pinimg.com/736x/3f/68/41/3f6841442ce599874f3d247ae438736b.jpg" alt="" class="img-responsive" /></a>
 					</div>
 					
 					<div class="name">
-                <h3>{userProfile ? <p>{userProfile.name}</p> : <></>}</h3>
+                <h3>{userProfile ? <p>{userProfile.login}</p> : <></>}</h3>
                 <Link to="/editprofile">Изменить</Link>
 					</div>
 					<div class="clearfix"></div>
@@ -133,36 +111,36 @@ class Profile extends Component {
 				<div class="r-detail">
 					<table>	
 						<tr>
-							<th>Имя</th>
+							<th style= {styles}>Имя</th>
                   <td>{userProfile ? <p>{userProfile.name}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Пол</th>
-							<td>Женский</td>
+                  <th style={styles}>Пол</th>
+                  <td>{userProfile ? <p>{userProfile.sex}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Возраст</th>
-							<td>28 Yrs</td>
+                  <th style={styles}>Возраст</th>
+                  <td>{userProfile ? <p>{userProfile.age}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Mогу научить</th>
-                  <td>{userProfile ? <p style={{ 'font-size': '20px' }}>{userProfile.hobby}</p> : <></>}</td>
+                  <th style={styles}>Mогу научить</th>
+                  <td>{userProfile ? <p>{userProfile.hobby}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Xочу научиться</th>
-                  <td>{userProfile ? <p style={{ 'font-size': '20px' }}>{userProfile.wish}</p> : <></>}</td>
+                  <th style={styles}>Xочу научиться</th>
+                  <td>{userProfile ? <p>{userProfile.wish}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Телефон</th>
+                  <th style={styles}>Телефон</th>
                   <td>{userProfile ? <p>{userProfile.phone}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Почта</th>
+                  <th style={styles}>Почта</th>
                   <td>{userProfile ? <p>{userProfile.email}</p> : <></>}</td>
 						</tr>
 						<tr>
-							<th>Город</th>
-							<td>Москва</td>
+                  <th style={styles}>Город</th>
+                  <td>{userProfile ? <p>{userProfile.city}</p> : <></>}</td>
 						</tr>
 					</table>
 				</div>
