@@ -1,5 +1,4 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
 
 const router = express.Router();
 const User = require('../models/user');
@@ -18,7 +17,6 @@ router.post('/api/registration', async (req, res) => {
     await user.save();
     req.session.user = user;
     res.json(user);
-    console.log(user);
   } catch (error) {
     res.json(error);
   }
@@ -43,10 +41,11 @@ router.post('/api/login/', async (req, res) => {
 router.post('/api/auto/', async (req, res) => {
   if (!req.session.user) {
     res.json([]);
+  } else {
+    const id = req.session.user._id;
+    const userUpdate = await User.findById(id);
+    req.session.user ? res.json(userUpdate) : res.json({ user: 0 });
   }
-  const id = req.session.user._id;
-  const userUpdate = await User.findById(id);
-  req.session.user ? res.json(userUpdate) : res.json({ user: 0 });
 });
 
 router.post('/api/selection/', async (req, res) => {
@@ -56,10 +55,10 @@ router.post('/api/selection/', async (req, res) => {
     const id = req.session.user._id;
     const userFromProfile = await User.findById(id);
     const { wish } = userFromProfile;
-    const users = await User.find({ hobby: wish });
-    console.log('прилетел в selection');
-    // console.log(users);
-    await res.json(users);
+    if (wish !== null) {
+      const users = await User.find({ hobby: wish });
+      await res.json(users);
+    }
   }
 });
 
@@ -71,14 +70,18 @@ router.post('/api/fullmatch/', async (req, res) => {
     const userFromProfile = await User.findById(id);
     const wishProfile = userFromProfile.wish;
     const hobbyProfile = userFromProfile.hobby;
-    const teachersFullMatch = await User.find({ hobby: wishProfile, wish: hobbyProfile });
-    await res.json(teachersFullMatch);
+    if (wishProfile !== null && hobbyProfile !== null) {
+      const teachersFullMatch = await User.find({ hobby: wishProfile, wish: hobbyProfile });
+      await res.json(teachersFullMatch);
+    }
   }
 });
 
 router.post('/api/searchTeacher', async (req, res) => {
-  const searchTeachers = await User.find({ hobby: req.body.searchBody });
-  await res.json(searchTeachers);
+  if (req.body.searchBody !== null) {
+    const searchTeachers = await User.find({ hobby: req.body.searchBody });
+    await res.json(searchTeachers);
+  } else res.json([]);
 });
 
 router.get('/api/logout', async (req, res, next) => {

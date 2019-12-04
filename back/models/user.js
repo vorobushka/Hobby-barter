@@ -9,6 +9,9 @@ const userSchema = new mongoose.Schema({
   hobby: String,
   wish: String,
   phone: String,
+  sex: String,
+  city: String,
+  age: String,
 });
 
 module.exports = mongoose.model('User', userSchema);

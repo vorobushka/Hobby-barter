@@ -1,4 +1,11 @@
-.emp-profile{
+.logo {
+font-family: 'Raleway', sans-serif;
+font-family: 'Kurale', serif;
+font-size: 26px;
+color:  rgb(230, 224, 240);
+ 
+}
+ .emp-profile{
     padding: 5%;
     margin-top: 5%;
     margin-bottom: 15%;
@@ -7,12 +14,11 @@
     height: 70vh;
 }
 .shrift {
-  padding: 5%;
+    padding: 5%;
     margin-top: 5%;
-    margin-bottom: 15%;
-    margin-right: 10%;
+    margin-right: 42%;
     margin-left: -10%
-}
-body{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+} 
+html, body{
+    background-image: url('https://cdn.enginethemes.com/oneengine/2014/04/slider-4.jpg');
 }
