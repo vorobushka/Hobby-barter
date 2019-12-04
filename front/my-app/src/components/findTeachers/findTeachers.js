@@ -22,7 +22,6 @@ class FindTeachers extends Component {
     if (teachers.length === 0 && teachersFull.length === 0 && teachersFromSearch.length === 0) {
       this.setState({ status: false });
     } else {
-      // this.setState({ status: true });
     }
   };
 
@@ -58,8 +57,6 @@ class FindTeachers extends Component {
   searchTeacher = async e => {
     e.preventDefault();
     const { search } = this.state;
-    console.log(search);
-    // debugger;
     const respSearch = await fetch('/api/searchTeacher', {
       method: 'POST',
       headers: {
@@ -71,7 +68,6 @@ class FindTeachers extends Component {
     const searchTeachers = await respSearch.json();
     this.props.teachersInStoreFromSearch(searchTeachers);
     this.props.history.push('/findTeachers');
-    // this.state.status = true;
     if (searchTeachers.length === 0) {
       this.setState({ status: false });
     } else {
@@ -80,12 +76,6 @@ class FindTeachers extends Component {
   };
 
   render() {
-
-    const styles = {
-      'text-align': 'left',
-      'font-size': '20px'
-    };
-
     let message;
     if (this.state.status === false) {
       message = (

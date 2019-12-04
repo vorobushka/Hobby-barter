@@ -156,11 +156,6 @@ class Profile extends Component {
 </div>
       </div>
 
-
-
-
-
-
 );
 }
 }
@@ -183,95 +178,3 @@ export default connect(
   mapDispatchToProps,
   )(Profile);
   
-  // <div className="container emp-profile" style={styles}>
-  //   <div className="row">
-  //     <div className="col-md-4">
-  //       <div className="profile-img">
-  //         <img src="https://i.pinimg.com/736x/3f/68/41/3f6841442ce599874f3d247ae438736b.jpg" alt="" />
-  //         <div className="file btn btn-lg btn-primary">
-  //           Изменить фото
-  //           <input type="file" name="file" />
-  //         </div>
-  //       </div>
-  //     </div>
-  //     <div className="col-md-6">
-  //       <div className="profile-head">
-  //         <ul className="nav nav-tabs" id="myTab" role="tablist">
-  //           <li className="nav-item">
-  //             <nav class="navbar navbar-light bg-light">
-  //               <form className="form-inline">
-  //                 <input
-  //                   className="form-control mr-sm-2"
-  //                   type="text"
-  //                   name="search"
-  //                   onChange={this.searchInState}
-  //                   placeholder="Поиск учителя"
-  //                 />
-  //                 <button
-  //                   className="btn btn-outline-success my-2 my-sm-0"
-  //                   onClick={e => this.searchTeacher(e)}
-  //                   type="submit"
-  //                 >
-  //                   Поиск
-  //                 </button>
-  //                 <button className="btn btn-link" onClick={e => this.logout(e)}>
-  //                   Выйти
-  //                 </button>
-  //                 <Link to="/editprofile">Изменить</Link>
-  //               </form>
-  //             </nav>
-  //             <a
-  //               className="nav-link active"
-  //               id="home-tab"
-  //               data-toggle="tab"
-  //               href="#home"
-  //               role="tab"
-  //               aria-controls="home"
-  //               aria-selected="true"
-  //             >
-  //               Информация
-  //             </a>
-  //           </li>
-  //           <li className="nav-item"></li>
-  //         </ul>
-  //       </div>
-  //     </div>
-  //   </div>
-  //   <div className="row">
-  //     <div className="col-md-4">
-  //       <div className="profile-work">
-  //         <p> Я МОГУ НАУЧИТЬ ТЕБЯ: </p>
-  //         <div>{userProfile ? <p style={{ 'font-size': '20px' }}>{userProfile.hobby}</p> : <></>}</div>
-  //         <p>Я ХОЧУ НАУЧИТЬСЯ: </p>
-  //         <div>{userProfile ? <p style={{ 'font-size': '20px' }}>{userProfile.wish}</p> : <></>}</div>
-  //       </div>
-  //     </div>
-  //     <div className="col-md-8">
-  //       <div className="tab-content profile-tab" id="myTabContent">
-  //         <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-  //           <div className="row">
-  //             <div className="col-md-6">
-  //               <label>Имя</label>
-  //             </div>
-  //             <div className="col-md-6">{userProfile ? <p>{userProfile.name}</p> : <></>}</div>
-  //           </div>
-  //           <div className="row">
-  //             <div className="col-md-6">
-  //               <label>Почта</label>
-  //             </div>
-  //             <div className="col-md-6">{userProfile ? <p>{userProfile.email}</p> : <></>}</div>
-  //           </div>
-  //           <div className="row">
-  //             <div className="col-md-6">
-  //               <label>Телефон</label>
-  //             </div>
-  //             <div className="col-md-6">
-  //               <div className="col-md-6">{userProfile ? <p>{userProfile.phone}</p> : <></>}</div>
-  //             </div>
-  //           </div>
-  //         </div>
-  //         <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // </div>

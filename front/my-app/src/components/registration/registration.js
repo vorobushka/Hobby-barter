@@ -200,29 +200,3 @@ export default connect(
   mapDispatchToProps,
 )(Registration);
 
-// <div className="div-form">
-//   <form className="form-" onSubmit={this.registration}>
-//     <div className="form-group">
-//       <input
-//         type="email"
-//         className="form-control"
-//         name="email"
-//         placeholder="введите почту"
-//         onChange={this.emailInState}
-//       />
-//     </div>
-//     <div className="form-group">
-//       <input type="text" className="form-control" name="login" placeholder="введите логин" onChange={this.loginInState} />
-//     </div>
-//     <div className="form-group">
-//       <input
-//         type="password"
-//         name="password"
-//         className="form-control"
-//         placeholder="введите пароль"
-//         onChange={this.passwordInState}
-//       />
-//     </div>
-//     <button type="submit" className="btn btn-light">Отправить</button>
-//   </form>
-// </div>

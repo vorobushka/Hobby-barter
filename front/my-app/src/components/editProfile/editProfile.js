@@ -1,7 +1,5 @@
 import './editProfile.css';
 import React, { Component } from 'react';
-import { Navbar, Nav, Button, Dropdown, Form, Collapse, FormControl } from 'bootstrap-4-react';
-import { Link } from 'react-router-dom';
 
 export default class EditProfile extends Component {
   constructor(props) {
@@ -49,7 +47,6 @@ export default class EditProfile extends Component {
 
   editProfile = async e => {
     e.preventDefault();
-    console.log('work form');
     const dataUser = this.state;
     const response = await fetch('/api/edit', {
       method: 'POST',
@@ -65,7 +62,7 @@ export default class EditProfile extends Component {
 
   render() {
      const styles = {
-      'text-align': 'left',
+    'text-align': 'left',
     'font-size': '20px'
      };
     return (
@@ -196,80 +193,3 @@ export default class EditProfile extends Component {
     }
   }
   
-  // <div className="container emp-profile" style={styles}>
-  //   <form onSubmit={this.editProfile}>
-  //     <div class="container">
-  //       <div class="row">
-  //         <div class="col-sm">
-  //           <div class="form-group">
-  //             <label for="exampleInputEmail1">Почта</label>
-  //             <input
-  //               type="text"
-  //               class="form-control"
-  //               id="exampleInputEmail1"
-  //               aria-describedby="emailHelp"
-  //               placeholder="Введите почту"
-  //               onChange={this.emailInState}
-  //             />
-  //           </div>
-  //           <div class="form-group">
-  //             <label for="exampleInputEmail1">Имя</label>
-  //             <input
-  //               type="text"
-  //               class="form-control"
-  //               id="exampleInputEmail1"
-  //               aria-describedby="emailHelp"
-  //               placeholder="Введите имя"
-  //               onChange={this.nameInState}
-  //             />
-  //           </div>
-  //           <div class="form-group">
-  //             <label for="exampleInputEmail1">Номер</label>
-  //             <input
-  //               type="text"
-  //               class="form-control"
-  //               id="exampleInputEmail1"
-  //               aria-describedby="emailHelp"
-  //               placeholder="Введите номер"
-  //               onChange={this.phoneInState}
-  //             />
-  //           </div>
-  //         </div>
-  //         <div class="col-sm"></div>
-  //         <div class="col-sm">
-  //           <div class="form-group">
-  //             <label for="exampleInputEmail1">Навыки</label>
-  //             <input
-  //               type="text"
-  //               class="form-control"
-  //               id="exampleInputEmail1"
-  //               aria-describedby="emailHelp"
-  //               placeholder="Введите навык"
-  //               onChange={this.hobbyInState}
-  //             />
-  //             <small id="emailHelp" class="form-text text-muted">
-  //               Навыки, которым вы можете научить
-  //             </small>
-  //           </div>
-  //           <div class="form-group">
-  //             <label for="exampleInputEmail1">Навыки</label>
-  //             <input
-  //               type="text"
-  //               class="form-control"
-  //               id="exampleInputEmail1"
-  //               aria-describedby="emailHelp"
-  //               placeholder="Введите навык"
-  //               onChange={this.wishInState}
-  //             />
-  //             <small id="emailHelp" class="form-text text-muted">
-  //               Навыки, которыми вы хотите научиться.
-  //             </small>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //     <button type="submit" class="btn btn-primary">
-  //       Сохранить
-  //     </button>
-  //   </form>
-  // </div>

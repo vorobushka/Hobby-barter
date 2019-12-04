@@ -21,8 +21,6 @@ export default class App extends Component {
           <Route path="/editprofile" component={EditProfile} />
           <Route path="/findTeachers" component={FindTeachers} />
         </Router>
-        {/* <Login />
-        <Registration /> */}
       </div>
     );
   }

@@ -117,46 +117,6 @@ class Login extends Component {
 </div>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      // <div className="div-form">
-      //   <form className="form-" onSubmit={this.login}>
-      //     <div className="form-group">
-      //       <input
-      //         type="text"
-      //         className="form-control"
-      //         name="login"
-      //         placeholder="введите логин"
-      //         onChange={this.loginInStateLogin}
-      //       />
-      //     </div>
-      //     <div className="form-group">
-      //       <input
-      //         type="password"
-      //         name="password"
-      //         className="form-control"
-      //         placeholder="введите пароль"
-      //         onChange={this.passwordInStateLogin}
-      //       />
-      //     </div>
-      //     <button type="submit" className="btn btn-light">Отправить</button>
-      //   </form>
-      // </div>
     );
   }
 }
